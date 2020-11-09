@@ -12,9 +12,9 @@ export function checkIfValidName(name: string, rule: NamingRule): boolean {
         return true
     }
 
-    for (const pattern in rule.allowedNamePatterns) {
-        // pattern
-        const matched = minimatch(name, pattern)
+    for (const pattern of rule.allowedNamePatterns) {
+        // pattern matching with ignoring case.
+        const matched = minimatch(name, pattern, { nocase: true })
         if (matched) {
             return true;
         }

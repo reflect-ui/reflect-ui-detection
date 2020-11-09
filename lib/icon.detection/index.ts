@@ -7,6 +7,7 @@ import { ReflectSceneNode } from '@bridged.xyz/design-sdk/lib/nodes'
 
 export function detectIfIcon(node: ReflectSceneNode): DetectionResult {
     const name = node.name;
+    console.warn(name)
     const isNameValid = checkIfValidName(name, rule)
     if (isNameValid) {
         return {
