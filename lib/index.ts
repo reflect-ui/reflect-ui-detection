@@ -12,7 +12,7 @@ export interface DetectionResult {
 }
 
 
-export type Entity = "Graphics" | "Icon" | "Unknown" | "Button" | "Screen"
+export type Entity = "Graphics" | "Icon" | "Unknown" | "Button" | "Screen" | "ButtonBase"
 
 export function detect(node: ReflectSceneNode): DetectionResult {
     // run the naming detection first.
@@ -38,7 +38,9 @@ export function detect(node: ReflectSceneNode): DetectionResult {
     const screenDetect = detectIfScreen(node as any)
     detections.push(screenDetect)
 
-    // const buttonDetect = detectIfButton(node as any)
+    const buttonDetect = detectIfButton(node as any)
+    console.warn('buttonDetect', buttonDetect)
+    detections.push(buttonDetect)
 
     try {
         return detections.sort((a, b) => { return b.accuracy - a.accuracy })[0]

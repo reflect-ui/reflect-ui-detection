@@ -8,6 +8,12 @@ export interface TypesRule {
     allowedTypes?: Array<ReflectSceneNodeType>
 }
 
+export interface TextRule {
+    maxChars: number
+    minChars: number
+
+}
+
 export interface SizingRule {
     minSize?: number
     minHeight?: number

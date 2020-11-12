@@ -1,12 +1,12 @@
 {
     "name": "@reflect.bridged.xyz/detection",
     "version": "0.1.0",
-    "scripts": {
-    },
+    "scripts": {},
     "dependencies": {
         "minimatch": "^3.0.4",
         "@reflect.bridged.xyz/linter": "0.0.1",
-        "@bridged.xyz/design-sdk": "0.1.0"
+        "@bridged.xyz/design-sdk": "0.1.0",
+        "screen-size-specs": "0.0.1"
     },
     "devDependencies": {
         "@types/minimatch": "^3.0.3",

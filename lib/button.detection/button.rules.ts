@@ -1,6 +1,9 @@
 import { DetectionRule } from "../rules/rule.base";
+import { reflectMaxPhone } from "screen-size-specs"
 
-const rules = <DetectionRule>{
+export default <DetectionRule>{
     minSize: 32,
-    maxHegith: 72
+    minWidth: 80,
+    maxWidth: reflectMaxPhone.width,
+    maxHegith: 80
 }

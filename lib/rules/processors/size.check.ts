@@ -8,14 +8,14 @@ import { SizingRule } from "../rule.base";
  */
 export function checkIfValidSize(node: ReflectSceneNode, rule: SizingRule): boolean {
 
-    const validMinSize: boolean = rule.minSize ? (node.width > rule.minSize && node.height > rule.minSize) : true
-    const validMaxSize: boolean = rule.maxSize ? (node.width < rule.maxSize && node.height < rule.maxSize) : true
+    const validMinSize: boolean = rule.minSize ? (node.width >= rule.minSize && node.height >= rule.minSize) : true
+    const validMaxSize: boolean = rule.maxSize ? (node.width <= rule.maxSize && node.height <= rule.maxSize) : true
 
-    const validMaxWidth: boolean = rule.maxWidth ? node.width < rule.maxWidth : true
-    const validMaxHeight: boolean = rule.maxHegith ? node.height < rule.maxHegith : true
+    const validMaxWidth: boolean = rule.maxWidth ? node.width <= rule.maxWidth : true
+    const validMaxHeight: boolean = rule.maxHegith ? node.height <= rule.maxHegith : true
 
-    const validMinWidth: boolean = rule.minWidth ? node.width > rule.minWidth : true
-    const validMinHeight: boolean = rule.minHeight ? node.height > rule.minHeight : true
+    const validMinWidth: boolean = rule.minWidth ? node.width >= rule.minWidth : true
+    const validMinHeight: boolean = rule.minHeight ? node.height >= rule.minHeight : true
 
     const validSize =
         // min max size
