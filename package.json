@@ -1,15 +1,20 @@
 {
     "name": "@reflect.bridged.xyz/detection",
     "version": "0.1.0",
-    "scripts": {
-    },
+    "license": "MIT",
+    "private": false,
+    "scripts": {},
     "dependencies": {
-        "minimatch": "^3.0.4",
+        "@bridged.xyz/design-sdk": "0.1.0",
+        "@reflect.bridged.xyz/core": "0.0.1",
         "@reflect.bridged.xyz/linter": "0.0.1",
-        "@bridged.xyz/design-sdk": "0.1.0"
+        "minimatch": "^3.0.4",
+        "screen-size-specs": "0.0.1",
+        "tinycolor2": "^1.4.2"
     },
     "devDependencies": {
         "@types/minimatch": "^3.0.3",
+        "@types/tinycolor2": "^1.4.2",
         "typescript": "^4.0.5"
     }
 }

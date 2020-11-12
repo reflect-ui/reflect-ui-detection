@@ -3,16 +3,32 @@ import { detectIfButton } from "./button.detection"
 import { detectIfIcon } from "./icon.detection"
 import { detectIfScreen } from "./screen.detection"
 
-export interface DetectionResult {
+export interface DetectionResult<T = any> {
     result: boolean
     entity: Entity
     accuracy: number
     reason?: Array<string>
-    others?: Array<DetectionResult>
+    others?: Array<DetectionResult<any>>
+    data?: T
+}
+
+export interface CheckResult<T = any> {
+    readonly result: boolean
+    readonly reason: ReadonlyArray<string>
+    readonly data?: T
 }
 
 
-export type Entity = "Graphics" | "Icon" | "Unknown" | "Button" | "Screen"
+export type Entity =
+    "graphics" |
+    "icon" |
+    "unknown" |
+    'divider' |
+    "screen" |
+    "button" |
+    "button.base" |
+    "button.text" |
+    "button.icon"
 
 export function detect(node: ReflectSceneNode): DetectionResult {
     // run the naming detection first.
@@ -38,14 +54,16 @@ export function detect(node: ReflectSceneNode): DetectionResult {
     const screenDetect = detectIfScreen(node as any)
     detections.push(screenDetect)
 
-    // const buttonDetect = detectIfButton(node as any)
+    const buttonDetect = detectIfButton(node as any)
+    console.warn('buttonDetect', buttonDetect)
+    detections.push(buttonDetect)
 
     try {
         return detections.sort((a, b) => { return b.accuracy - a.accuracy })[0]
     } catch (e) {
         return <DetectionResult>{
             accuracy: 1,
-            entity: "Unknown",
+            entity: "unknown",
             reason: ["nothing matched with detection."]
         }
     }

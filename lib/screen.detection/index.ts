@@ -1,19 +1,19 @@
 import { ReflectSceneNode } from "@bridged.xyz/design-sdk/lib/nodes";
 import { DetectionResult } from "..";
-import { checkIfRoot } from "../rules/processors/root.check";
-import { checkIfValidSize } from "../rules/processors/size.check";
+import { checkIfRoot } from "../processors/root.check";
+import { checkIfValidSize } from "../processors/size.check";
 import rule from "./screen.rule"
 
 export function detectIfScreen(node: ReflectSceneNode): DetectionResult {
 
     const isRootFrame = checkIfRoot(node)
-    const isValidSize = checkIfValidSize(node, rule)
+    const sizeValidationResult = checkIfValidSize(node, rule)
 
-    const isScreen = isRootFrame && isValidSize
+    const isScreen = isRootFrame && sizeValidationResult.result
 
     return <DetectionResult>{
         result: isScreen,
-        entity: "Screen",
+        entity: "screen",
         accuracy: 0.5
     }
 }
