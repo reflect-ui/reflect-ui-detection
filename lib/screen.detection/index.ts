@@ -13,7 +13,7 @@ export function detectIfScreen(node: ReflectSceneNode): DetectionResult {
 
     return <DetectionResult>{
         result: isScreen,
-        entity: "Screen",
+        entity: "screen",
         accuracy: 0.5
     }
 }

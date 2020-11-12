@@ -12,7 +12,7 @@ export function detectIfIcon(node: ReflectSceneNode): DetectionResult {
     if (isNameValid) {
         return {
             result: true,
-            entity: "Icon",
+            entity: "icon",
             accuracy: 1
         }
     }
@@ -22,7 +22,7 @@ export function detectIfIcon(node: ReflectSceneNode): DetectionResult {
     const isIcon = isValidSize && isSquare
     return {
         result: isIcon,
-        entity: isIcon ? "Icon" : "Unknown",
+        entity: isIcon ? "icon" : "unknown",
         accuracy: 0.1
     }
 }

@@ -12,7 +12,16 @@ export interface DetectionResult {
 }
 
 
-export type Entity = "Graphics" | "Icon" | "Unknown" | "Button" | "Screen" | "ButtonBase"
+export type Entity =
+    "graphics" |
+    "icon" |
+    "unknown" |
+    'divider' |
+    "screen" |
+    "button" |
+    "button.base" |
+    "button.text" |
+    "button.icon"
 
 export function detect(node: ReflectSceneNode): DetectionResult {
     // run the naming detection first.
@@ -47,7 +56,7 @@ export function detect(node: ReflectSceneNode): DetectionResult {
     } catch (e) {
         return <DetectionResult>{
             accuracy: 1,
-            entity: "Unknown",
+            entity: "unknown",
             reason: ["nothing matched with detection."]
         }
     }

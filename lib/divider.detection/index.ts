@@ -10,8 +10,9 @@ export function detectIfDevider(node: SceneNode): DetectionResult {
     if (!isValidType) {
         return {
             result: false,
-            entity: "Unknown",
-            accuracy: 0,
+            entity: 'divider',
+            accuracy: 1,
+            reason: ['type did not matched to be a divider']
         }
     }
 

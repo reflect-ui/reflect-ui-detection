@@ -11,7 +11,12 @@ export interface TypesRule {
 export interface TextRule {
     maxChars: number
     minChars: number
-
+    minWords: number
+    maxWords: number
+    minLines: number
+    maxLines: number
+    minFontSize: number
+    maxFontSize: number
 }
 
 export interface SizingRule {

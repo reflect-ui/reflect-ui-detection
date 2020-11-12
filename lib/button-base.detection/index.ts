@@ -6,7 +6,7 @@ export function detectIfButtonBase(node: SceneNode): DetectionResult {
 
     } else {
         return {
-            entity: "ButtonBase",
+            entity: "button.base",
             result: false,
             accuracy: 1,
             reason: ['button base does not match type. form of incapable of displaying fill']

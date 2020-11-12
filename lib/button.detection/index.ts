@@ -1,6 +1,8 @@
 import { ReflectChildrenMixin, ReflectFrameNode, ReflectGroupNode, ReflectSceneNode, ReflectTextNode } from "@bridged.xyz/design-sdk/lib/nodes";
 import { DetectionResult } from "..";
+import { detectIfValidButtonText } from "../button-text.detection";
 import { checkIfValidSize } from "../rules/processors/size.check";
+import { getSingle } from "../utils";
 import rule from "./button.rules"
 
 const GRAND_CHILDREN_NO_MORE_THAN = 5
@@ -10,7 +12,7 @@ export function detectIfButton(node: ReflectSceneNode): DetectionResult {
     const isNotButton = !isValidSize
     if (isNotButton) {
         return {
-            entity: "Button",
+            entity: "button",
             result: false,
             accuracy: 1,
             reason: [
@@ -30,7 +32,7 @@ export function detectIfButton(node: ReflectSceneNode): DetectionResult {
 
         if (grandchildren.length > GRAND_CHILDREN_NO_MORE_THAN) {
             return {
-                entity: "Button",
+                entity: "button",
                 result: false,
                 accuracy: 1,
                 reason: [
@@ -39,17 +41,33 @@ export function detectIfButton(node: ReflectSceneNode): DetectionResult {
             }
         }
 
-
-        const textNodeCount = grandchildren.filter((c) => {
+        const textNodes: Array<ReflectTextNode> = grandchildren.filter((c) => {
             return c instanceof ReflectTextNode
-        }).length
-        if (textNodeCount !== 1) {
+        }) as Array<ReflectTextNode>
+        const textNodesCount = textNodes.length
+        if (textNodesCount !== 1) {
             return {
-                entity: "Button",
+                entity: "button",
                 result: false,
                 accuracy: 1,
                 reason: [
-                    `this node contains ${textNodeCount} text slots, button requires exactly 1 text slot.`
+                    `this node contains ${textNodesCount} text slots, button requires exactly 1 text slot.`
+                ]
+            }
+        }
+
+
+        // SLOT: button.text
+        const textSlotNode = getSingle<ReflectTextNode>(textNodes)
+        const textSlotDetectionResult = detectIfValidButtonText(textSlotNode)
+        if (!textSlotDetectionResult.result) {
+            return {
+                entity: "button",
+                result: false,
+                accuracy: 1,
+                reason: [
+                    `this node contains single text, but the text validation for button text slot is failed.`,
+                    ...textSlotDetectionResult.reason
                 ]
             }
         }
@@ -57,7 +75,7 @@ export function detectIfButton(node: ReflectSceneNode): DetectionResult {
 
     } else {
         return {
-            entity: "Button",
+            entity: "button",
             result: false,
             accuracy: 1,
             reason: [
@@ -68,7 +86,7 @@ export function detectIfButton(node: ReflectSceneNode): DetectionResult {
 
 
     return {
-        entity: "Button",
+        entity: "button",
         result: true,
         accuracy: 1,
         reason: [
