@@ -1,4 +1,4 @@
-import { TypesRule } from "../rule.base";
+import { TypesRule } from "../rules/rule.base";
 
 /**
  * check if node is a valid type for the target rule.

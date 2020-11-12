@@ -1,8 +1,8 @@
 import rule from "./icon.rules"
 import { DetectionResult } from "..";
-import { checkIfSquare } from "../rules/processors/square.check";
-import { checkIfValidSize } from "../rules/processors/size.check";
-import { checkIfValidName } from "../rules/processors/name.check";
+import { checkIfSquare } from "../processors/square.check";
+import { checkIfValidSize } from "../processors/size.check";
+import { checkIfValidName } from "../processors/name.check";
 import { ReflectSceneNode } from '@bridged.xyz/design-sdk/lib/nodes'
 
 export function detectIfIcon(node: ReflectSceneNode): DetectionResult {

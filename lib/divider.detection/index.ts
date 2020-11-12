@@ -1,5 +1,5 @@
 import { DetectionResult } from "..";
-import { checkIfValidNodeType } from "../rules/processors/node-type.check";
+import { checkIfValidNodeType } from "../processors/node-type.check";
 import rule from "./divider.rule"
 
 export function detectIfDevider(node: SceneNode): DetectionResult {

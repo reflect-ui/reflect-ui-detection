@@ -3,12 +3,13 @@ import { detectIfButton } from "./button.detection"
 import { detectIfIcon } from "./icon.detection"
 import { detectIfScreen } from "./screen.detection"
 
-export interface DetectionResult {
+export interface DetectionResult<T = any> {
     result: boolean
     entity: Entity
     accuracy: number
     reason?: Array<string>
-    others?: Array<DetectionResult>
+    others?: Array<DetectionResult<any>>
+    data?: T
 }
 
 

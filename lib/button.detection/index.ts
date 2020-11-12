@@ -1,12 +1,26 @@
-import { ReflectChildrenMixin, ReflectFrameNode, ReflectGroupNode, ReflectSceneNode, ReflectTextNode } from "@bridged.xyz/design-sdk/lib/nodes";
+import { ReflectChildrenMixin, ReflectFrameNode, ReflectGroupNode, ReflectRectangleNode, ReflectSceneNode, ReflectTextNode } from "@bridged.xyz/design-sdk/lib/nodes";
+import { ButtonManifest } from "@reflect.bridged.xyz/core/lib"
 import { DetectionResult } from "..";
+import { detectIfButtonBase, ReflectButtonBaseNode } from "../button-base.detection";
+import { ReflectButtonIconNode } from "../button-icon.detection";
 import { detectIfValidButtonText } from "../button-text.detection";
-import { checkIfValidSize } from "../rules/processors/size.check";
+import { checkIfValidSize } from "../processors/size.check";
 import { getSingle } from "../utils";
 import rule from "./button.rules"
 
-const GRAND_CHILDREN_NO_MORE_THAN = 5
-export function detectIfButton(node: ReflectSceneNode): DetectionResult {
+export type DetectedButtonManifest = ButtonManifest<ReflectButtonBaseNode, ReflectTextNode, ReflectButtonIconNode>
+
+
+const GRAND_CHILDREN_NO_MORE_THAN = 5 // todo -> move this logic to rules interface field
+export function detectIfButton(node: ReflectSceneNode): DetectionResult<DetectedButtonManifest> {
+
+    // region SLOTS
+    let buttonTextSlotNode: ReflectTextNode
+    let buttonBaseSlotNode: ReflectButtonBaseNode
+    let buttonIconSlotNode: ReflectButtonIconNode
+    // endregion SLOTS
+
+
     // run rule based first
     const isValidSize = checkIfValidSize(node, rule)
     const isNotButton = !isValidSize
@@ -20,15 +34,13 @@ export function detectIfButton(node: ReflectSceneNode): DetectionResult {
             ]
         }
     }
-    //
-
 
 
     if (node instanceof ReflectChildrenMixin) {
         const childrenLen = node.children.length
-        const grandchildren = mapGrandchildren(node)
-        console.log('grandchildren', grandchildren)
-
+        const grandchildren = mapGrandchildren(node, {
+            includeThis: true
+        })
 
         if (grandchildren.length > GRAND_CHILDREN_NO_MORE_THAN) {
             return {
@@ -40,6 +52,39 @@ export function detectIfButton(node: ReflectSceneNode): DetectionResult {
                 ]
             }
         }
+
+        // ======================================
+        // region slot:base
+        //
+        const baseCandidateNodes: Array<ReflectButtonBaseNode> = grandchildren.filter((n) => {
+            return (n instanceof ReflectFrameNode) || (n instanceof ReflectRectangleNode)
+        }) as Array<ReflectButtonBaseNode>
+
+        const buttonBaseDetectionResult = detectIfButtonBase(baseCandidateNodes)
+        if (!buttonBaseDetectionResult.result) {
+            return {
+                entity: "button",
+                result: false,
+                accuracy: 1,
+                reason: [
+                    'this node does not contains any base slot for the button manifest',
+                    ...buttonBaseDetectionResult.reason
+                ]
+            }
+        } else {
+            buttonBaseSlotNode = buttonBaseDetectionResult.data
+        }
+
+
+        //
+        // endregion slot:base
+        //======================================
+
+
+
+        // ======================================
+        // region process slot:text
+        //
 
         const textNodes: Array<ReflectTextNode> = grandchildren.filter((c) => {
             return c instanceof ReflectTextNode
@@ -56,10 +101,8 @@ export function detectIfButton(node: ReflectSceneNode): DetectionResult {
             }
         }
 
-
-        // SLOT: button.text
-        const textSlotNode = getSingle<ReflectTextNode>(textNodes)
-        const textSlotDetectionResult = detectIfValidButtonText(textSlotNode)
+        buttonTextSlotNode = getSingle<ReflectTextNode>(textNodes)
+        const textSlotDetectionResult = detectIfValidButtonText(buttonTextSlotNode, buttonBaseSlotNode)
         if (!textSlotDetectionResult.result) {
             return {
                 entity: "button",
@@ -71,6 +114,10 @@ export function detectIfButton(node: ReflectSceneNode): DetectionResult {
                 ]
             }
         }
+
+        //
+        // endregion process slot:text
+        // ======================================
 
 
     } else {
@@ -89,6 +136,11 @@ export function detectIfButton(node: ReflectSceneNode): DetectionResult {
         entity: "button",
         result: true,
         accuracy: 1,
+        data: <DetectedButtonManifest>{
+            text: buttonTextSlotNode,
+            base: buttonBaseSlotNode,
+            icon: buttonIconSlotNode
+        },
         reason: [
             `all blocking logic passed.`
         ]
@@ -96,9 +148,16 @@ export function detectIfButton(node: ReflectSceneNode): DetectionResult {
 }
 
 
-
-function mapGrandchildren(node: ReflectChildrenMixin): Array<ReflectSceneNode> {
+function mapGrandchildren(node: ReflectChildrenMixin, options?: {
+    includeThis?: boolean
+}): Array<ReflectSceneNode> {
     const children: Array<ReflectSceneNode> = []
+
+    // if includeThis option enabled, add this.
+    if (options?.includeThis) {
+        children.push(node)
+    }
+
     for (const child of node.children) {
         if (child instanceof ReflectChildrenMixin) {
             const grandchildren = mapGrandchildren(child)
@@ -110,6 +169,5 @@ function mapGrandchildren(node: ReflectChildrenMixin): Array<ReflectSceneNode> {
             children.push(child)
         }
     }
-
     return children
 }

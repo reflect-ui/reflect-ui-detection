@@ -1,4 +1,4 @@
-import { NamingRule } from "../rule.base";
+import { NamingRule } from "../rules/rule.base";
 import minimatch from "minimatch"
 
 /**

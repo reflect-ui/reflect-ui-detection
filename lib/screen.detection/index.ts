@@ -1,7 +1,7 @@
 import { ReflectSceneNode } from "@bridged.xyz/design-sdk/lib/nodes";
 import { DetectionResult } from "..";
-import { checkIfRoot } from "../rules/processors/root.check";
-import { checkIfValidSize } from "../rules/processors/size.check";
+import { checkIfRoot } from "../processors/root.check";
+import { checkIfValidSize } from "../processors/size.check";
 import rule from "./screen.rule"
 
 export function detectIfScreen(node: ReflectSceneNode): DetectionResult {
