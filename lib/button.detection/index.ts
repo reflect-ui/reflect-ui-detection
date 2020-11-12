@@ -22,15 +22,16 @@ export function detectIfButton(node: ReflectSceneNode): DetectionResult<Detected
 
 
     // run rule based first
-    const isValidSize = checkIfValidSize(node, rule)
-    const isNotButton = !isValidSize
+    const sizeValidationResult = checkIfValidSize(node, rule)
+    const isNotButton = !sizeValidationResult.result
     if (isNotButton) {
         return {
             entity: "button",
             result: false,
             accuracy: 1,
             reason: [
-                `this node coul't pass logic barrier`
+                `this node coul't pass logic barrier`,
+                ...sizeValidationResult.reason
             ]
         }
     }

@@ -12,6 +12,12 @@ export interface DetectionResult<T = any> {
     data?: T
 }
 
+export interface CheckResult<T = any> {
+    readonly result: boolean
+    readonly reason: ReadonlyArray<string>
+    readonly data?: T
+}
+
 
 export type Entity =
     "graphics" |

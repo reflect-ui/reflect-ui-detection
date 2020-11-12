@@ -1,4 +1,5 @@
 import { ReflectSceneNode } from "@bridged.xyz/design-sdk/lib/nodes";
+import { CheckResult } from "..";
 import { SizingRule } from "../rules/rule.base";
 
 /**
@@ -6,7 +7,7 @@ import { SizingRule } from "../rules/rule.base";
  * @param node 
  * @param rule 
  */
-export function checkIfValidSize(node: ReflectSceneNode, rule: SizingRule): boolean {
+export function checkIfValidSize(node: ReflectSceneNode, rule: SizingRule): CheckResult {
 
     const validMinSize: boolean = rule.minSize ? (node.width >= rule.minSize && node.height >= rule.minSize) : true
     const validMaxSize: boolean = rule.maxSize ? (node.width <= rule.maxSize && node.height <= rule.maxSize) : true
@@ -23,5 +24,9 @@ export function checkIfValidSize(node: ReflectSceneNode, rule: SizingRule): bool
         // min max w/h
         validMaxWidth && validMaxHeight && validMinWidth && validMinHeight
 
-    return validSize;
+
+    return {
+        result: validSize,
+        reason: ['valid size check failed']
+    };
 }

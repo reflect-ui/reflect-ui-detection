@@ -1,7 +1,8 @@
 import { ReflectTextNode } from "@bridged.xyz/design-sdk/lib/nodes";
+import { CheckResult } from "..";
 import { TextRule } from "../rules/rule.base";
 
-export function checkIfValidText(node: ReflectTextNode, rule: TextRule): boolean {
+export function checkIfValidText(node: ReflectTextNode, rule: TextRule): CheckResult {
     const fontSize = node.fontSize as number
     const characters = node.characters
     const words = characters.split(' ')
@@ -19,12 +20,25 @@ export function checkIfValidText(node: ReflectTextNode, rule: TextRule): boolean
     // const validVerticalAlignment = rule.allowedTextVerticalAlignments ? rule.allowedTextVerticalAlignments.includes(node.textAlignVertical) : false
     const validHorizontalAlignment = rule.allowedTextHorizontalAlignments ? rule.allowedTextHorizontalAlignments.includes(node.textAlignHorizontal) : false
 
-    return validFontSize
+    const validText = validFontSize
         && validCharacterLength
         && validWordCount
         && validLines
         // && validVerticalAlignment
         && validHorizontalAlignment
+
+    if (validText) {
+        return {
+            result: true,
+            reason: ['text validation passed']
+        }
+    } else {
+        return {
+            result: false,
+            reason: ['text validation failed']
+        }
+    }
+
 }
 
 

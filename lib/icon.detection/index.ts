@@ -1,5 +1,5 @@
 import rule from "./icon.rules"
-import { DetectionResult } from "..";
+import { CheckResult, DetectionResult } from "..";
 import { checkIfSquare } from "../processors/square.check";
 import { checkIfValidSize } from "../processors/size.check";
 import { checkIfValidName } from "../processors/name.check";
@@ -17,9 +17,9 @@ export function detectIfIcon(node: ReflectSceneNode): DetectionResult {
         }
     }
 
-    const isValidSize = checkIfValidSize(node, rule)
-    const isSquare = checkIfSquare(node)
-    const isIcon = isValidSize && isSquare
+    const sizeValidationResult: CheckResult = checkIfValidSize(node, rule)
+    const squareValidationResult: CheckResult = checkIfSquare(node)
+    const isIcon = sizeValidationResult.result && squareValidationResult.result
     return {
         result: isIcon,
         entity: isIcon ? "icon" : "unknown",

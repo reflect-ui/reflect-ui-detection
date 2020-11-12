@@ -7,9 +7,9 @@ import rule from "./screen.rule"
 export function detectIfScreen(node: ReflectSceneNode): DetectionResult {
 
     const isRootFrame = checkIfRoot(node)
-    const isValidSize = checkIfValidSize(node, rule)
+    const sizeValidationResult = checkIfValidSize(node, rule)
 
-    const isScreen = isRootFrame && isValidSize
+    const isScreen = isRootFrame && sizeValidationResult.result
 
     return <DetectionResult>{
         result: isScreen,
