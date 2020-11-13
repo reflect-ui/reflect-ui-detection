@@ -9,7 +9,6 @@ export function detectIfButtonBase(maybeNodes: ReflectButtonBaseNode | Array<Ref
     let node: ReflectButtonBaseNode
     if (Array.isArray(maybeNodes)) {
         const availableNodes = maybeNodes.filter((n) => {
-            console.log('n', n)
             // explicit type check.
             // todo -> this should be handled on ReflectBaseNode conversion side.
             if (!allowedTypes.includes(n.origin)) {

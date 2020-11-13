@@ -19,7 +19,7 @@ export interface IllustDetectionRule extends DetectionRule, ComplexityRule {
 
 export default <IllustDetectionRule>{
     // sizing
-    minSize: 120,
+    minSize: 80,
     maxWidth: reflectMaxPhone.height,
     maxHegith: reflectMaxPhone.height,
     minRatio: 1 / 5,
@@ -27,13 +27,17 @@ export default <IllustDetectionRule>{
     // sizing
 
     // complexity
-    minTotalChildCount: 20,
-    maxTotalChildCount: 200,
+    minTotalChildCount: 8,
+    maxTotalChildCount: 500,
     minTotalColorCount: 3,
     maxTotalColorCount: 100,
 
 
     allowedChildren: [
+        {
+            target: '*',
+            allow: true
+        },
         {
             target: ReflectSceneNodeType.text,
             allow: false
@@ -43,5 +47,26 @@ export default <IllustDetectionRule>{
             allow: false
         },
     ],
-    allowedTypes: [ReflectSceneNodeType.frame, ReflectSceneNodeType.group]
+    allowedTypes: [
+        {
+            target: '*',
+            allow: false
+        },
+        {
+            target: ReflectSceneNodeType.frame,
+            allow: true
+        },
+        {
+            target: ReflectSceneNodeType.group,
+            allow: true
+        },
+        {
+            target: ReflectSceneNodeType.instance,
+            allow: true
+        },
+        {
+            target: ReflectSceneNodeType.component,
+            allow: true
+        }
+    ]
 }

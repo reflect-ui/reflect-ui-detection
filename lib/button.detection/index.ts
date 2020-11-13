@@ -38,10 +38,7 @@ export function detectIfButton(node: ReflectSceneNode): DetectionResult<Detected
 
 
     if (node instanceof ReflectChildrenMixin) {
-        const childrenLen = node.children.length
-        const grandchildren = mapGrandchildren(node, {
-            includeThis: true
-        })
+        const grandchildren = node.getGrandchildren({ includeThis: true })
 
         if (grandchildren.length > GRAND_CHILDREN_NO_MORE_THAN) {
             return {
@@ -146,29 +143,4 @@ export function detectIfButton(node: ReflectSceneNode): DetectionResult<Detected
             `all blocking logic passed.`
         ]
     }
-}
-
-
-function mapGrandchildren(node: ReflectChildrenMixin, options?: {
-    includeThis?: boolean
-}): Array<ReflectSceneNode> {
-    const children: Array<ReflectSceneNode> = []
-
-    // if includeThis option enabled, add this.
-    if (options?.includeThis) {
-        children.push(node)
-    }
-
-    for (const child of node.children) {
-        if (child instanceof ReflectChildrenMixin) {
-            const grandchildren = mapGrandchildren(child)
-            children.push(...grandchildren)
-        }
-
-        // frame can be also a child, but not group. group only holds children, so we do not push group nodes
-        if (!(child instanceof ReflectGroupNode)) {
-            children.push(child)
-        }
-    }
-    return children
 }

@@ -5,10 +5,6 @@
 import { ReflectSceneNodeType, TextHorizontalAligment, TextVerticalAligment } from "@bridged.xyz/design-sdk/lib/nodes"
 import { TextAutoResize } from "@bridged.xyz/design-sdk/lib/nodes/types/text.node";
 
-export interface TypesRule {
-    allowedTypes?: Array<ReflectSceneNodeType>
-}
-
 
 export interface VerticalPlacementRule {
     verticalCenter: boolean
@@ -76,15 +72,16 @@ export interface SlotsRule {
 }
 
 export interface Allowence<T> {
-    target: T
+    target: T | '*'
     allow: boolean
 }
 
 export interface StructureRule extends SlotsRule {
+    allowedTypes?: Array<Allowence<ReflectSceneNodeType>>
     allowedChildren?: Array<Allowence<ReflectSceneNodeType>>
     mustBeRoot?: boolean
 }
 
-export interface DetectionRule extends SizingRule, NamingRule, StructureRule, TypesRule {
+export interface DetectionRule extends SizingRule, NamingRule, StructureRule {
 
 }
