@@ -1,6 +1,6 @@
 import { ReflectSceneNode } from "@bridged.xyz/design-sdk/lib/nodes";
 import { CheckResult } from "..";
-import { SizingRule } from "../rules/rule.base";
+import { SizingRule } from "../rules";
 
 /**
  * check if the node matches the rule by iterating valid rule variables

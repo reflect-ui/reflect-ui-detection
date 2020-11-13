@@ -1,6 +1,6 @@
 import { ReflectConstraintMixin, ReflectSceneNode } from "@bridged.xyz/design-sdk/lib/nodes";
 import { LCRS } from "@bridged.xyz/design-sdk/lib/utils/lcrs";
-import { HorizontalPlacementRule, PlacementRule } from "../rules/rule.base";
+import { HorizontalPlacementRule, PlacementRule } from "../rules";
 
 export function checkIfValidPlacement(node: ReflectSceneNode, rule: PlacementRule): boolean {
     if (!node.parent) {

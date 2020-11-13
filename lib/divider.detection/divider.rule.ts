@@ -1,5 +1,5 @@
 import { ReflectSceneNodeType } from "@bridged.xyz/design-sdk/lib/nodes";
-import { DetectionRule } from "../rules/rule.base";
+import { DetectionRule } from "../rules";
 
 export default <DetectionRule>{
     allowedTypes: [ReflectSceneNodeType.line, ReflectSceneNodeType.rectangle, ReflectSceneNodeType.component, ReflectSceneNodeType.instance, ReflectSceneNodeType.variant],

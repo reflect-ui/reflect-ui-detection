@@ -1,6 +1,6 @@
 import { ReflectTextNode } from "@bridged.xyz/design-sdk/lib/nodes";
 import { CheckResult } from "..";
-import { TextRule } from "../rules/rule.base";
+import { TextRule } from "../rules";
 
 export function checkIfValidText(node: ReflectTextNode, rule: TextRule): CheckResult {
     const fontSize = node.fontSize as number
@@ -18,7 +18,9 @@ export function checkIfValidText(node: ReflectTextNode, rule: TextRule): CheckRe
     const validWordCount = words.length >= rule.minWords && words.length <= rule.maxWords
     const validLines = lines >= rule.minLines && lines <= rule.maxLines
     // const validVerticalAlignment = rule.allowedTextVerticalAlignments ? rule.allowedTextVerticalAlignments.includes(node.textAlignVertical) : false
-    const validHorizontalAlignment = rule.allowedTextHorizontalAlignments ? rule.allowedTextHorizontalAlignments.includes(node.textAlignHorizontal) : false
+    const validHorizontalAlignment = rule.allowedTextHorizontalAlignments ? rule.allowedTextHorizontalAlignments.includes(node.textAlignHorizontal) : true
+    const validTextAutoResize = rule.allowedTextAutoResize ? rule.allowedTextAutoResize.includes(node.textAutoResize) : true
+    console.log('validTextAutoResize', validTextAutoResize)
 
     const validText = validFontSize
         && validCharacterLength
@@ -26,6 +28,7 @@ export function checkIfValidText(node: ReflectTextNode, rule: TextRule): CheckRe
         && validLines
         // && validVerticalAlignment
         && validHorizontalAlignment
+        && validTextAutoResize
 
     if (validText) {
         return {

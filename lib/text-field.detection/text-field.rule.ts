@@ -1,5 +1,5 @@
 import { DEFAULT_TEXT_FIELD_NAMING_CONVENTION_PATTERNS } from "@reflect.bridged.xyz/linter/lib/constants/naming-conventions/text-field.naming";
-import { DetectionRule } from "../rules/rule.base";
+import { DetectionRule } from "../rules";
 
 export default <DetectionRule>{
     minSize: 24,

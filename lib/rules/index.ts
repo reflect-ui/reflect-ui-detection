@@ -3,6 +3,7 @@
  */
 
 import { ReflectSceneNodeType, TextHorizontalAligment, TextVerticalAligment } from "@bridged.xyz/design-sdk/lib/nodes"
+import { TextAutoResize } from "@bridged.xyz/design-sdk/lib/nodes/types/text.node";
 
 export interface TypesRule {
     allowedTypes?: Array<ReflectSceneNodeType>
@@ -25,6 +26,13 @@ export interface PlacementRule extends VerticalPlacementRule, HorizontalPlacemen
 
 }
 
+export interface ComplexityRule {
+    minTotalChildCount: number
+    maxTotalChildCount: number
+    minTotalColorCount: number
+    maxTotalColorCount: number
+}
+
 export interface TextRule {
     maxChars: number
     minChars: number
@@ -40,6 +48,8 @@ export interface TextRule {
 
     allowedTextVerticalAlignments?: ReadonlyArray<TextVerticalAligment>
     allowedTextHorizontalAlignments?: ReadonlyArray<TextHorizontalAligment>
+
+    allowedTextAutoResize?: ReadonlyArray<TextAutoResize>
 }
 
 
@@ -52,6 +62,8 @@ export interface SizingRule {
     maxHegith?: number
     maxWidth?: number
 
+    minRatio?: number
+    maxRatio?: number
     mustBeSquare?: boolean
 }
 
@@ -63,8 +75,13 @@ export interface SlotsRule {
     allowedTextSlotCount?: number
 }
 
+export interface Allowence<T> {
+    target: T
+    allow: boolean
+}
+
 export interface StructureRule extends SlotsRule {
-    allowedChildren?: Array<NodeType>
+    allowedChildren?: Array<Allowence<ReflectSceneNodeType>>
     mustBeRoot?: boolean
 }
 

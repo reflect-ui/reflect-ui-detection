@@ -1,4 +1,4 @@
-import { PlacementRule, TextRule } from "../rules/rule.base";
+import { PlacementRule, TextRule } from "../rules";
 
 export default <TextRule | PlacementRule>{
     horizontalCenter: true,
@@ -13,4 +13,5 @@ export default <TextRule | PlacementRule>{
     minFontSize: 14,
     maxFontSize: 24,
     allowedTextHorizontalAlignments: ['CENTER', 'LEFT'],
+    allowedTextAutoResize: ['WIDTH_AND_HEIGHT']
 }
