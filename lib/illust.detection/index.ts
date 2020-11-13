@@ -1,10 +1,24 @@
 import { ReflectFrameNode, ReflectSceneNode } from "@bridged.xyz/design-sdk/lib/nodes";
 import { DetectionResult } from "..";
 import { checkIfValidComplexity } from "../processors/complexity.check";
+import { checkIfValidSize } from "../processors/size.check";
 import { checkIfValidStructure } from "../processors/structure.check";
 import rule from "./illust.rule"
 
 export function detectIfIllust(node: ReflectSceneNode): DetectionResult<ReflectFrameNode> {
+    const sizeValidation = checkIfValidSize(node, rule)
+    if (!sizeValidation.result) {
+        return {
+            result: false,
+            reason: [
+                'structure logic barrier failed',
+                ...sizeValidation.reason,
+            ],
+            accuracy: 1,
+            entity: 'graphics.illust'
+        }
+    }
+
     const structureValidation = checkIfValidStructure(node, rule)
     if (!structureValidation.result) {
         return {

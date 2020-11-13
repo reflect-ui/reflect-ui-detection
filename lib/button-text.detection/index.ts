@@ -21,7 +21,7 @@ export function detectIfValidButtonText(node: ReflectTextNode, base: ReflectButt
     }
 
 
-    const placementValidation = checkIfValidPlacement(node, rule as PlacementRule)
+    const placementValidation = checkIfValidPlacement(node, rule as PlacementRule, base)
     if (!placementValidation) {
         return <DetectionResult>{
             result: false,

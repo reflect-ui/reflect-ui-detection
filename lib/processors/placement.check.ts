@@ -2,7 +2,7 @@ import { ReflectConstraintMixin, ReflectSceneNode } from "@bridged.xyz/design-sd
 import { LCRS } from "@bridged.xyz/design-sdk/lib/utils/lcrs";
 import { HorizontalPlacementRule, PlacementRule } from "../rules";
 
-export function checkIfValidPlacement(node: ReflectSceneNode, rule: PlacementRule): boolean {
+export function checkIfValidPlacement(node: ReflectSceneNode, rule: PlacementRule, relativeTo?: ReflectSceneNode): boolean {
     if (!node.parent) {
         // if node has no parent, cannot continue placement check process.
         return false
@@ -13,9 +13,7 @@ export function checkIfValidPlacement(node: ReflectSceneNode, rule: PlacementRul
         return false
     }
 
-    const isValidHorizontal = checkIfValidHorizontalPlacement(node, rule)
-
-    console.log('isValidHorizontal', isValidHorizontal)
+    const isValidHorizontal = checkIfValidHorizontalPlacement(node, rule, relativeTo)
 
     // todo check vertical
     // isValidVertical
@@ -24,8 +22,9 @@ export function checkIfValidPlacement(node: ReflectSceneNode, rule: PlacementRul
 }
 
 
-function checkIfValidHorizontalPlacement(node: ReflectConstraintMixin, rule: HorizontalPlacementRule): boolean {
-    const lcrs: LCRS = node.relativeLcrs
+function checkIfValidHorizontalPlacement(node: ReflectConstraintMixin, rule: HorizontalPlacementRule, relativeTo?: ReflectSceneNode): boolean {
+    console.log('relative to lcrs', node.getRelativeToLcrs(relativeTo))
+    const lcrs: LCRS = relativeTo ? node.getRelativeToLcrs(relativeTo) : node.relativeLcrs
     const valid = (rule.horizontalCenter && lcrs == 'Center' || rule.horizontalCenter && lcrs == 'Stretch') ||
         (rule.horizontalLeft && lcrs == 'Left') ||
         (rule.horizontalRight && lcrs == 'Right')
