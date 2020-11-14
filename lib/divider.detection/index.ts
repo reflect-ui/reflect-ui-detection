@@ -6,7 +6,7 @@ import rule from "./divider.rule"
 // TODO implement all
 export function detectIfDivider(node: ReflectSceneNode): DetectionResult {
     // MUST BE a specified type to be recognized as a divider.
-    const structureValidationResult = checkIfValidStructure(node, rule);
+    const structureValidationResult = checkIfValidStructure(node, rule.horizontal);
     if (!structureValidationResult.result) {
         return {
             result: false,

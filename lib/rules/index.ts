@@ -58,6 +58,9 @@ export interface SizingRule {
     maxHegith?: number
     maxWidth?: number
 
+    // when this is allowed, calcualtes (+-) 90 rotated node's width as height  with visualWidth and visualHeight
+    rightAngleCalculation?: SizingRule
+
     minRatio?: number
     maxRatio?: number
     mustBeSquare?: boolean
