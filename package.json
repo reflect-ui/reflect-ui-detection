@@ -9,6 +9,7 @@
         "@reflect.bridged.xyz/core": "0.0.1",
         "@reflect.bridged.xyz/linter": "0.0.1",
         "@reflect.bridged.xyz/uiutils": "0.0.1",
+        "coli": "0.0.1",
         "minimatch": "^3.0.4",
         "screen-size-specs": "0.0.1",
         "tinycolor2": "^1.4.2"

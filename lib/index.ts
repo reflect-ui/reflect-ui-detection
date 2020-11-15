@@ -31,7 +31,8 @@ export type Entity =
     "button" |
     "button.base" |
     "button.text" |
-    "button.icon"
+    "button.icon" |
+    "parameters"
 
 export function detect(node: ReflectSceneNode): DetectionResult {
     // run the naming detection first.
