@@ -8,16 +8,8 @@ import { checkIfValidStructure } from "../processors/structure.check";
 
 export function detectIfIcon(node: ReflectSceneNode): DetectionResult {
     const name = node.name;
-    const isNameValid = checkIfValidName(name, rule)
-    if (isNameValid) {
-        return {
-            result: true,
-            entity: "icon",
-            accuracy: 1
-        }
-    }
 
-
+    // 1. size check
     const sizeValidationResult: CheckResult = checkIfValidSize(node, rule)
     if (!sizeValidationResult.result) {
         return {
@@ -28,8 +20,18 @@ export function detectIfIcon(node: ReflectSceneNode): DetectionResult {
         }
     }
 
+    // 2. name check
+    const isNameValid = checkIfValidName(name, rule)
+    if (isNameValid) {
+        return {
+            result: true,
+            entity: "icon",
+            accuracy: 1
+        }
+    }
 
 
+    // 3. square check
     const squareValidationResult: CheckResult = checkIfSquare(node)
     if (!squareValidationResult.result) {
         return {

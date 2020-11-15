@@ -38,11 +38,14 @@ export function detectIfValidButtonText(node: ReflectTextNode, base: ReflectButt
     //
 
     // todo - use this
-    const bgColor = rgbTo8hex(base.primaryColor, base.primaryColor.a)
-    const textColor = rgbTo8hex(node.primaryColor, node.primaryColor.a)
-    const readability = tinycolor.readability(bgColor, textColor)
-    const size: "large" | "small" = (node.fontSize as number) >= 18 ? 'large' : 'small'
-    const isWcagReadable = tinycolor.isReadable(bgColor, textColor, { level: "AA", size: size })
+    // if (base.primaryColor) {
+    //     const bgColor = rgbTo8hex(base.primaryColor, base.primaryColor?.a)
+    //     const textColor = rgbTo8hex(node.primaryColor, node.primaryColor?.a)
+
+    // }
+    // const readability = tinycolor.readability(bgColor, textColor)
+    // const size: "large" | "small" = (node.fontSize as number) >= 18 ? 'large' : 'small'
+    // const isWcagReadable = tinycolor.isReadable(bgColor, textColor, { level: "AA", size: size })
 
     //
     // endregion 

@@ -9,6 +9,8 @@ import { ReflectSceneNodeType } from "@bridged.xyz/design-sdk/lib/nodes"
 export default <DetectionRule>{
     minSize: 12,
     maxSize: 40,
+    minRatio: 1,
+    maxRatio: 1.5,
     mustBeSquare: true,
     allowedTypes: [
         {

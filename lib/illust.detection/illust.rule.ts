@@ -19,9 +19,14 @@ export interface IllustDetectionRule extends DetectionRule, ComplexityRule {
 
 export default <IllustDetectionRule>{
     // sizing
-    minSize: 80,
+    minSize: 56,
     maxWidth: reflectMaxPhone.height,
     maxHegith: reflectMaxPhone.height,
+
+    // todo
+    rightAngleCalculation: {
+
+    },
     minRatio: 1 / 5,
     maxRatio: 5 / 1,
     // sizing
