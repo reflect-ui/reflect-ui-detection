@@ -1,6 +1,6 @@
 import { ReflectSceneNode } from "@bridged.xyz/design-sdk/lib/nodes";
 import { CheckResult } from "..";
-import { SizingRule } from "../rules/rule.base";
+import { SizingRule } from "../rules";
 
 /**
  * check if the node matches the rule by iterating valid rule variables
@@ -8,6 +8,7 @@ import { SizingRule } from "../rules/rule.base";
  * @param rule 
  */
 export function checkIfValidSize(node: ReflectSceneNode, rule: SizingRule): CheckResult {
+    const ratio = node.width / node.height
 
     const validMinSize: boolean = rule.minSize ? (node.width >= rule.minSize && node.height >= rule.minSize) : true
     const validMaxSize: boolean = rule.maxSize ? (node.width <= rule.maxSize && node.height <= rule.maxSize) : true
@@ -18,11 +19,16 @@ export function checkIfValidSize(node: ReflectSceneNode, rule: SizingRule): Chec
     const validMinWidth: boolean = rule.minWidth ? node.width >= rule.minWidth : true
     const validMinHeight: boolean = rule.minHeight ? node.height >= rule.minHeight : true
 
+    const validMinRatio: boolean = rule.minRatio ? rule.minRatio <= ratio : true
+    const validMaxRatio: boolean = rule.maxRatio ? rule.maxRatio >= ratio : true
+
     const validSize =
         // min max size
         validMinSize && validMaxSize &&
         // min max w/h
-        validMaxWidth && validMaxHeight && validMinWidth && validMinHeight
+        validMaxWidth && validMaxHeight && validMinWidth && validMinHeight &&
+        // min max ratio
+        validMinRatio && validMaxRatio
 
 
     return {

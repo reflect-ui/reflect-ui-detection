@@ -1,4 +1,4 @@
-import { SlotsRule } from "../rules/rule.base";
+import { SlotsRule } from "../rules";
 
 export function checkIfSlotsValid(node: SceneNode, rule: SlotsRule): boolean {
 

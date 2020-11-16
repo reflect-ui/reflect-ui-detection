@@ -1,4 +1,4 @@
-import { DetectionRule } from "../rules/rule.base";
+import { DetectionRule } from "../rules";
 import { reflectMaxPhone } from "screen-size-specs"
 
 export default <DetectionRule>{

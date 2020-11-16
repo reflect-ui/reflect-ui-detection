@@ -1,4 +1,4 @@
-import { DetectionRule } from "../rules/rule.base";
+import { DetectionRule } from "../rules";
 
 export default <DetectionRule>{
     minHeight: 500,

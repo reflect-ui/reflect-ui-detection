@@ -1,6 +1,7 @@
 import { ReflectSceneNode } from "@bridged.xyz/design-sdk/lib/nodes"
 import { detectIfButton } from "./button.detection"
 import { detectIfIcon } from "./icon.detection"
+import { detectIfIllust } from "./illust.detection"
 import { detectIfScreen } from "./screen.detection"
 
 export interface DetectionResult<T = any> {
@@ -21,6 +22,8 @@ export interface CheckResult<T = any> {
 
 export type Entity =
     "graphics" |
+    "graphics.illust" |
+    "graphics.image" |
     "icon" |
     "unknown" |
     'divider' |
@@ -28,7 +31,8 @@ export type Entity =
     "button" |
     "button.base" |
     "button.text" |
-    "button.icon"
+    "button.icon" |
+    "parameters"
 
 export function detect(node: ReflectSceneNode): DetectionResult {
     // run the naming detection first.
@@ -47,16 +51,21 @@ export function detect(node: ReflectSceneNode): DetectionResult {
     const detections: Array<DetectionResult> = [];
 
     // detection 
-    // FIXME "as any"
-    const iconDetect = detectIfIcon(node as any)
+    const iconDetect = detectIfIcon(node)
     detections.push(iconDetect)
 
-    const screenDetect = detectIfScreen(node as any)
+    const screenDetect = detectIfScreen(node)
     detections.push(screenDetect)
 
-    const buttonDetect = detectIfButton(node as any)
+    const buttonDetect = detectIfButton(node)
     console.warn('buttonDetect', buttonDetect)
     detections.push(buttonDetect)
+
+
+    const illustDetect = detectIfIllust(node)
+    detections.push(illustDetect)
+    console.warn('illustDetect', illustDetect)
+
 
     try {
         return detections.sort((a, b) => { return b.accuracy - a.accuracy })[0]
