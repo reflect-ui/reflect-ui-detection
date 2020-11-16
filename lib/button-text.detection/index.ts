@@ -7,9 +7,10 @@ import { PlacementRule, TextRule } from "../rules";
 import rule from "./button-text.rule"
 import { rgbTo8hex } from "@reflect.bridged.xyz/uiutils/lib"
 import tinycolor from "tinycolor2"
+import { ReflectIconNode } from "../icon.detection";
 
 
-export function detectIfValidButtonText(node: ReflectTextNode, base: ReflectButtonBaseNode): DetectionResult {
+export function detectIfValidButtonText(node: ReflectTextNode, base: ReflectButtonBaseNode, icon?: ReflectIconNode): DetectionResult {
     const textValidation = checkIfValidText(node, rule as TextRule)
     if (!textValidation.result) {
         return <DetectionResult>{
@@ -21,15 +22,20 @@ export function detectIfValidButtonText(node: ReflectTextNode, base: ReflectButt
     }
 
 
-    const placementValidation = checkIfValidPlacement(node, rule as PlacementRule, base)
-    if (!placementValidation) {
-        return <DetectionResult>{
-            result: false,
-            accuracy: 1,
-            reason: ['text did not pass text placement validation'],
-            entity: 'button.text'
+    if (icon !== undefined) {
+        // TODO -> if icon provided, check text placement relative to icon
+    } else {
+        const placementValidation = checkIfValidPlacement(node, rule as PlacementRule, base)
+        if (!placementValidation) {
+            return <DetectionResult>{
+                result: false,
+                accuracy: 1,
+                reason: ['text did not pass text placement validation'],
+                entity: 'button.text'
+            }
         }
     }
+
 
 
 

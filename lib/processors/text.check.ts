@@ -86,9 +86,9 @@ function naiveTextWidth(args: {
     const charLen = args.characters.length
     const widthPerChar = 0.442105 * args.fontSize // TODO -> based on Roboto Regular Aa-Zz + special aschi characters
     let estimatedTextWitdh = widthPerChar * charLen
-    if (args.letterSpacing.unit == 'PERCENT') {
-        estimatedTextWitdh *= args.letterSpacing.value
-    } else if (args.letterSpacing.unit == 'PIXELS') {
+    if (args.letterSpacing?.unit == 'PERCENT') {
+        estimatedTextWitdh *= args.letterSpacing?.value
+    } else if (args.letterSpacing?.unit == 'PIXELS') {
         estimatedTextWitdh += charLen * args.letterSpacing.value
     }
 

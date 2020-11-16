@@ -1,3 +1,3 @@
-import { ReflectFrameNode, ReflectGroupNode } from "@bridged.xyz/design-sdk/lib/nodes";
+import { ReflectIconNode } from "../icon.detection";
 
-export type ReflectButtonIconNode = ReflectFrameNode | ReflectGroupNode
+export type ReflectButtonIconNode = ReflectIconNode

@@ -3,10 +3,13 @@ import { CheckResult, DetectionResult } from "..";
 import { checkIfSquare } from "../processors/square.check";
 import { checkIfValidSize } from "../processors/size.check";
 import { checkIfValidName } from "../processors/name.check";
-import { ReflectSceneNode } from '@bridged.xyz/design-sdk/lib/nodes'
+import { ReflectFrameNode, ReflectGroupNode, ReflectSceneNode } from '@bridged.xyz/design-sdk/lib/nodes'
 import { checkIfValidStructure } from "../processors/structure.check";
 
-export function detectIfIcon(node: ReflectSceneNode): DetectionResult {
+
+export type ReflectIconNode = ReflectFrameNode | ReflectGroupNode
+
+export function detectIfIcon(node: ReflectSceneNode): DetectionResult<ReflectIconNode> {
     const name = node.name;
 
     // 1. size check
@@ -26,7 +29,8 @@ export function detectIfIcon(node: ReflectSceneNode): DetectionResult {
         return {
             result: true,
             entity: "icon",
-            accuracy: 1
+            accuracy: 1,
+            data: node as ReflectIconNode
         }
     }
 
@@ -56,6 +60,7 @@ export function detectIfIcon(node: ReflectSceneNode): DetectionResult {
     return {
         result: true,
         entity: "icon",
-        accuracy: 0.5
+        accuracy: 0.5,
+        data: node as ReflectIconNode
     }
 }
