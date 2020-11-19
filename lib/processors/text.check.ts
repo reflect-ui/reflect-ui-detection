@@ -1,4 +1,4 @@
-import { ReflectTextNode, TextHorizontalAligment, TextVerticalAligment } from "@bridged.xyz/design-sdk/lib/nodes";
+import { ReflectTextNode, TextAlign, TextAlignVertical } from "@bridged.xyz/design-sdk/lib/nodes";
 import { LCRS } from "@bridged.xyz/design-sdk/lib/utils";
 import { CheckResult } from "..";
 import { TextRule } from "../rules";
@@ -112,13 +112,13 @@ function textContentLcrs(node: ReflectTextNode): TextContentPosition {
     let endX: number
 
     switch (node.textAlignHorizontal) {
-        case 'LEFT':
+        case TextAlign.left:
             break;
-        case 'CENTER':
+        case TextAlign.center:
             break;
-        case 'RIGHT':
+        case TextAlign.right:
             break;
-        case 'JUSTIFIED':
+        case TextAlign.justify:
             break;
     }
 

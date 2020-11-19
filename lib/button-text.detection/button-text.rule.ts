@@ -1,3 +1,4 @@
+import { TextAlign } from "@reflect.bridged.xyz/core/lib";
 import { PlacementRule, TextRule } from "../rules";
 
 export default <TextRule | PlacementRule>{
@@ -12,6 +13,6 @@ export default <TextRule | PlacementRule>{
     maxWords: 6,
     minFontSize: 14,
     maxFontSize: 24,
-    allowedTextHorizontalAlignments: ['CENTER', 'LEFT'],
+    allowedTextHorizontalAlignments: [TextAlign.center, TextAlign.left],
     allowedTextAutoResize: ['WIDTH_AND_HEIGHT']
 }

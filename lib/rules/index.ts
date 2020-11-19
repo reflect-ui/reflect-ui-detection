@@ -2,7 +2,7 @@
  * Detection rule is used for pre-processing filtering the input node is valid for further processing.
  */
 
-import { ReflectSceneNodeType, TextHorizontalAligment, TextVerticalAligment } from "@bridged.xyz/design-sdk/lib/nodes"
+import { ReflectSceneNodeType, TextAlign, TextAlignVertical } from "@bridged.xyz/design-sdk/lib/nodes"
 import { TextAutoResize } from "@bridged.xyz/design-sdk/lib/nodes/types/text.node";
 
 
@@ -42,8 +42,8 @@ export interface TextRule {
     minFontSize: number
     maxFontSize: number
 
-    allowedTextVerticalAlignments?: ReadonlyArray<TextVerticalAligment>
-    allowedTextHorizontalAlignments?: ReadonlyArray<TextHorizontalAligment>
+    allowedTextVerticalAlignments?: ReadonlyArray<TextAlignVertical>
+    allowedTextHorizontalAlignments?: ReadonlyArray<TextAlign>
 
     allowedTextAutoResize?: ReadonlyArray<TextAutoResize>
 }
