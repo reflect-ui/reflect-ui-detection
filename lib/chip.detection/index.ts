@@ -9,7 +9,7 @@ import {
     ReflectSceneNode,
     ReflectSceneNodeType,
     ReflectTextNode
-} from "@bridged.xyz/design-sdk/dist/nodes";
+} from "@bridged.xyz/design-sdk/lib/nodes";
 import {ChipManifest} from "@reflect.bridged.xyz/core/lib/chip/chip.manifest";
 import {checkIfValidSize} from "../processors/size.check";
 import {checkIfValidName} from "../processors/name.check";
@@ -31,7 +31,7 @@ export type ReflectChipRear = ReflectGroupNode | ReflectIconNode | ReflectRectan
 
 export type DetectedChipManifest = ChipManifest< ReflectChipBackGroundNode, ReflectChipContent, ReflectChipLeading, ReflectChipRear>
 
-export function detectIsChip(node: ReflectSceneNode): DetectionResult<DetectedChipManifest> {
+export function detectIfChip(node: ReflectSceneNode): DetectionResult<DetectedChipManifest> {
     // region SLOTS
     let ContentSlotNode: ReflectChipContent
     let BackgroundSlotNode: ReflectChipBackGroundNode
