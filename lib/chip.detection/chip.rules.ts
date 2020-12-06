@@ -1,7 +1,7 @@
 import {DetectionRule} from "../rules";
 import { ReflectSceneNodeType } from "@bridged.xyz/design-sdk/lib/nodes"
 import {DEFAULT_ICON_NAMING_CONVENTION_PATTERNS} from "@reflect.bridged.xyz/linter/dist/lib/constants/naming-conventions/icon.naming";
-import {DEFAULT_CHIP_NAMING_CONVENTION_PATTERNS} from "./chip.naming";
+import { DEFAULT_CHIP_NAMING_CONVENTION_PATTERNS } from "@reflect.bridged.xyz/linter/lib/constants/naming-conventions/chip.naming";
 
 export default  <DetectionRule>{
     mustBeSquare: true,
