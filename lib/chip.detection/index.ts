@@ -81,7 +81,7 @@ export function detectIsChip(node: ReflectSceneNode): DetectionResult<DetectedCh
             base: BackgroundSlotNode,
             content: ContentSlotNode,
             leading: LSlotNode,
-            rear: RSlotNode
+            trailing: RSlotNode
         },
         reason: [
             `all blocking logic passed.`
