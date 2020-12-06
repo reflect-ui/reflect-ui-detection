@@ -28,6 +28,7 @@ const DEFAULT_CHIP_BACKGROUND_NAMING_CONVENTION_PATTERNS = [
     "slot:chip/background",
     "slot:chip/bg",
     "slot:chip/BG",
+    "slot:chip/Background",
 ]
 
 export {
