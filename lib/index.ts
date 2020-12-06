@@ -32,6 +32,7 @@ export type Entity =
     "button.base" |
     "button.text" |
     "button.icon" |
+    "chip" |
     "parameters"
 
 export function detect(node: ReflectSceneNode): DetectionResult {

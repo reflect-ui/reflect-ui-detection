@@ -31,7 +31,7 @@ export type ReflectChipRear = ReflectGroupNode | ReflectIconNode | ReflectRectan
 
 export type DetectedChipManifest = ChipManifest< ReflectChipBackGroundNode, ReflectChipContent, ReflectChipLeading, ReflectChipRear>
 
-export function ChipIfButton(node: ReflectSceneNode): DetectionResult<DetectedChipManifest> {
+export function detectIsChip(node: ReflectSceneNode): DetectionResult<DetectedChipManifest> {
     // region SLOTS
     let ContentSlotNode: ReflectChipContent
     let BackgroundSlotNode: ReflectChipBackGroundNode
@@ -42,7 +42,7 @@ export function ChipIfButton(node: ReflectSceneNode): DetectionResult<DetectedCh
     const nameValidationResult = checkIfValidName(node.name, rule)
     if (!nameValidationResult) {
         return {
-            entity: "button",
+            entity: "chip",
             result: false,
             accuracy: 1,
             reason: [
@@ -54,7 +54,7 @@ export function ChipIfButton(node: ReflectSceneNode): DetectionResult<DetectedCh
         const grandchildren = node.getGrandchildren({includeThis: true})
         if (grandchildren.length > GRAND_CHILDREN_NO_MORE_THAN) {
             return {
-                entity: "button",
+                entity: "chip",
                 result: false,
                 accuracy: 1,
                 reason: [
@@ -74,7 +74,7 @@ export function ChipIfButton(node: ReflectSceneNode): DetectionResult<DetectedCh
 
     }
     return {
-        entity: "button",
+        entity: "chip",
         result: true,
         accuracy: 1,
         data: <DetectedChipManifest>{
