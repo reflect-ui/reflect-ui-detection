@@ -5,8 +5,6 @@ import { checkIfValidPlacement } from "../processors/placement.check";
 import { checkIfValidText } from "../processors/text.check";
 import { PlacementRule, TextRule } from "../rules";
 import rule from "./button-text.rule"
-import { rgbTo8hex } from "@reflect.bridged.xyz/uiutils/lib"
-import tinycolor from "tinycolor2"
 import { ReflectIconNode } from "../icon.detection";
 
 
