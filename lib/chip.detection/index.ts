@@ -19,24 +19,22 @@ import ruleContent from "./chip.content"
 import ruleLeading from "./chip.leading"
 import ruleRear from "./chip.rear"
 import {ReflectBaseNode, ReflectChildrenMixin, ReflectFrameNode, ReflectRectangleNode} from "@bridged.xyz/design-sdk/lib/nodes";
-import {ReflectIconNode} from "../icon.detection";
+import {detectIfIcon, ReflectIconNode} from "../icon.detection";
 
-const GRAND_CHILDREN_NO_MORE_THAN = 3;
+const GRAND_CHILDREN_NO_MORE_THAN = 100;
 
-export type ReflectChipBackGroundNode = ReflectFrameNode | ReflectRectangleNode | ReflectGroupNode
-export type ReflectChipContent = ReflectTextNode | ReflectFrameNode
-export type ReflectChipLeading = ReflectGroupNode | ReflectIconNode | ReflectRectangleNode | ReflectEllipseNode | ReflectFrameNode
-export type ReflectChipRear = ReflectGroupNode | ReflectIconNode | ReflectRectangleNode | ReflectEllipseNode | ReflectFrameNode
+export type ReflectChipBackGroundNode = ReflectFrameNode | ReflectRectangleNode 
+export type ReflectChipContent = ReflectTextNode
+export type ReflectChipIcon = ReflectIconNode
 
-
-export type DetectedChipManifest = ChipManifest< ReflectChipBackGroundNode, ReflectChipContent, ReflectChipLeading, ReflectChipRear>
+export type DetectedChipManifest = ChipManifest< ReflectChipBackGroundNode, ReflectChipContent, ReflectChipIcon, ReflectChipIcon>
 
 export function detectIfChip(node: ReflectSceneNode): DetectionResult<DetectedChipManifest> {
     // region SLOTS
     let ContentSlotNode: ReflectChipContent
     let BackgroundSlotNode: ReflectChipBackGroundNode
-    let LSlotNode: ReflectChipLeading
-    let RSlotNode: ReflectChipRear
+    let LSlotNode: ReflectChipIcon
+    let RSlotNode: ReflectChipIcon
     // endregion SLOTS
 
     const nameValidationResult = checkIfValidName(node.name, rule)
@@ -46,12 +44,14 @@ export function detectIfChip(node: ReflectSceneNode): DetectionResult<DetectedCh
             result: false,
             accuracy: 1,
             reason: [
-                `Worng Chip Name `
+                `Worng Chip Name ${node.name}`
             ]
         }
     }
     if (node instanceof ReflectChildrenMixin) {
+
         const grandchildren = node.getGrandchildren({includeThis: true})
+        console.log(node.children[0].children);
         if (grandchildren.length > GRAND_CHILDREN_NO_MORE_THAN) {
             return {
                 entity: "chip",
@@ -68,11 +68,51 @@ export function detectIfChip(node: ReflectSceneNode): DetectionResult<DetectedCh
         // region slot
         //
         BackgroundSlotNode = grandchildren.find((n)=>checkIfValidName(n.name, ruleBackGround)) as ReflectChipBackGroundNode;
-        ContentSlotNode = grandchildren.find((n)=>checkIfValidName(n.name, rule) ) as ReflectChipContent;
-        LSlotNode = grandchildren.find((n)=>checkIfValidName(n.name, ruleLeading)) as ReflectChipLeading;
-        RSlotNode = grandchildren.find((n)=>checkIfValidName(n.name, ruleRear)) as ReflectChipRear; 
-
+        ContentSlotNode = node.children[0].children.find((n)=>checkIfValidName(n.name, ruleContent) ) as ReflectChipContent;
+    
+        // LSlotNode = node.children[0].children.find((n)=>checkIfValidName(n.name, ruleLeading)) as ReflectChipOption;
+        // RSlotNode = node.children[0].children.find((n)=>checkIfValidName(n.name, ruleRear)) as ReflectChipOption; 
+        
     }
+    function findIconSlot(on: ReflectSceneNode): Array<ReflectButtonIconNode> | undefined {
+        const detections: Array<ReflectButtonIconNode> = []
+        const detection = detectIfIcon(on)
+        if (detection.result) {
+            detections.push(detection.data)
+        } else {
+            if (on instanceof ReflectChildrenMixin) {
+                on.children.forEach((child) => {
+                    detections.push(...findIconSlot(child))
+                })
+            }
+        }
+        return detections
+    }
+
+    const iconNodes = findIconSlot(node)
+    if (iconNodes.length === 1) {
+        console.log(`icon inside button detected for ${node.toString()}`)
+        RSlotNode = iconNodes[0] as ReflectButtonIconNode
+    } else if (iconNodes.length === 0) {
+        // do nothing. this must be non-icon button
+    } else {
+        return {
+            entity: "chip",
+            result: false,
+            accuracy: 1,
+            reason: [
+                `this node contains ${iconNodes.length} icon slots, chip requires exactly 0 or 2 icon slot.`
+            ]
+        }
+    }
+    var icon = RSlotNode.getGrandchildren({includeThis: true})
+    .find((n)=> detectIfIcon(n)) as ReflectIconNode | undefined | null
+    
+    if(icon){
+        RSlotNode = icon;
+    }
+
+
     return {
         entity: "chip",
         result: true,
