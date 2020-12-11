@@ -31,6 +31,7 @@ export type DetectedChipManifest = ChipManifest< ReflectChipBackGroundNode, Refl
 
 export function detectIfChip(node: ReflectSceneNode): DetectionResult<DetectedChipManifest> {
     // region SLOTS
+
     let ContentSlotNode: ReflectChipContent
     let BackgroundSlotNode: ReflectChipBackGroundNode
     let LSlotNode: ReflectChipIcon
@@ -51,7 +52,6 @@ export function detectIfChip(node: ReflectSceneNode): DetectionResult<DetectedCh
     if (node instanceof ReflectChildrenMixin) {
 
         const grandchildren = node.getGrandchildren({includeThis: true})
-        console.log(node.children[0].children);
         if (grandchildren.length > GRAND_CHILDREN_NO_MORE_THAN) {
             return {
                 entity: "chip",
@@ -67,12 +67,9 @@ export function detectIfChip(node: ReflectSceneNode): DetectionResult<DetectedCh
         // ======================================
         // region slot
         //
+
         BackgroundSlotNode = grandchildren.find((n)=>checkIfValidName(n.name, ruleBackGround)) as ReflectChipBackGroundNode;
-        ContentSlotNode = node.children[0].children.find((n)=>checkIfValidName(n.name, ruleContent) ) as ReflectChipContent;
-    
-        // LSlotNode = node.children[0].children.find((n)=>checkIfValidName(n.name, ruleLeading)) as ReflectChipOption;
-        // RSlotNode = node.children[0].children.find((n)=>checkIfValidName(n.name, ruleRear)) as ReflectChipOption; 
-        
+        ContentSlotNode = grandchildren.find((n)=>checkIfValidName(n.name, ruleContent) ) as ReflectChipContent;        
     }
     function findIconSlot(on: ReflectSceneNode): Array<ReflectButtonIconNode> | undefined {
         const detections: Array<ReflectButtonIconNode> = []
