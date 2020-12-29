@@ -1,4 +1,4 @@
-# Rule based detection TS implementation for figma / sketch / [bridged](https://bridged.xyz/downloads) platform.
+# Reflect UI Specification based detection TS implementation for figma / sketch / [bridged](https://bridged.xyz/downloads) platform.
 
 ## Rule based Icons detection
 [icon detection docs](./docs/icon.md)
