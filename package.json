@@ -6,7 +6,7 @@
     "scripts": {},
     "dependencies": {
         "@bridged.xyz/design-sdk": "0.1.0",
-        "@reflect.bridged.xyz/core": "0.0.1",
+        "@reflect.bridged.xyz/core": "0.0.2-rc.4.local",
         "@reflect.bridged.xyz/linter": "0.0.1",
         "@reflect.bridged.xyz/uiutils": "0.0.1",
         "coli": "0.0.1",
