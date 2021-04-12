@@ -1,23 +1,21 @@
 import { DetectionResult } from "..";
 
-import { Parameter, Parameters } from "coli/lib"
+// import { Parameter, Parameters } from "coli/lib"
 
-export function detectParameters(): DetectionResult<Parameters> {
+// export function detectParameters(): DetectionResult<Parameters> {
 
+//     const requiredParameter = <Parameter<any>>{
+//         name: "default"
+//     }
 
-    const requiredParameter = <Parameter<any>>{
-        name: "default"
-    }
-
-    const parameters = <Parameters>{
-        required: requiredParameter
-    }
-    return {
-        result: true,
-        accuracy: 1,
-        entity: 'parameters',
-        reason: [],
-        data: null
-    }
-}
-
+//     const parameters = <Parameters>{
+//         required: requiredParameter
+//     }
+//     return {
+//         result: true,
+//         accuracy: 1,
+//         entity: 'parameters',
+//         reason: [],
+//         data: null
+//     }
+// }

@@ -1,10 +1,10 @@
 import { DetectionRule } from "../rules";
-import { DEFAULT_ICON_NAMING_CONVENTION_PATTERNS } from "@reflect.bridged.xyz/linter/lib/constants/naming-conventions/icon.naming";
+import { DEFAULT_ICON_NAMING_CONVENTION_PATTERNS } from "@reflect-ui/lint/lib/constants/naming-conventions/icon.naming";
 import { ReflectSceneNodeType } from "@bridged.xyz/design-sdk/lib/nodes";
 import {
   ICON_MAX_SIZE,
   ICON_MIN_SIZE,
-} from "@reflect.bridged.xyz/core/lib/icon/icon.constants";
+} from "@reflect-ui/core/lib/icon/icon.constants";
 /**
  * material: https://material.io/design/iconography/system-icons.html
  * reflect: todo
