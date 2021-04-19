@@ -2,89 +2,86 @@
  * Detection rule is used for pre-processing filtering the input node is valid for further processing.
  */
 
-import { ReflectSceneNodeType, TextAlign, TextAlignVertical } from "@bridged.xyz/design-sdk/lib/nodes"
+import { ReflectSceneNodeType } from "@bridged.xyz/design-sdk/lib/nodes";
 import { TextAutoResize } from "@bridged.xyz/design-sdk/lib/nodes/types/text.node";
-
+import { TextAlign, TextAlignVertical } from "@reflect-ui/core/lib/text-align";
 
 export interface VerticalPlacementRule {
-    verticalCenter: boolean
-    verticalTop: boolean
-    verticalBottom: boolean
+  verticalCenter: boolean;
+  verticalTop: boolean;
+  verticalBottom: boolean;
 }
 
 export interface HorizontalPlacementRule {
-    horizontalCenter: boolean
-    horizontalLeft: boolean
-    horizontalRight: boolean
+  horizontalCenter: boolean;
+  horizontalLeft: boolean;
+  horizontalRight: boolean;
 }
 
-export interface PlacementRule extends VerticalPlacementRule, HorizontalPlacementRule {
-
-}
+export interface PlacementRule
+  extends VerticalPlacementRule,
+    HorizontalPlacementRule {}
 
 export interface ComplexityRule {
-    minTotalChildCount: number
-    maxTotalChildCount: number
-    minTotalColorCount: number
-    maxTotalColorCount: number
+  minTotalChildCount: number;
+  maxTotalChildCount: number;
+  minTotalColorCount: number;
+  maxTotalColorCount: number;
 }
 
 export interface TextRule {
-    maxChars: number
-    minChars: number
+  maxChars: number;
+  minChars: number;
 
-    minWords: number
-    maxWords: number
+  minWords: number;
+  maxWords: number;
 
-    minLines: number
-    maxLines: number
+  minLines: number;
+  maxLines: number;
 
-    minFontSize: number
-    maxFontSize: number
+  minFontSize: number;
+  maxFontSize: number;
 
-    allowedTextVerticalAlignments?: ReadonlyArray<TextAlignVertical>
-    allowedTextHorizontalAlignments?: ReadonlyArray<TextAlign>
+  allowedTextVerticalAlignments?: ReadonlyArray<TextAlignVertical>;
+  allowedTextHorizontalAlignments?: ReadonlyArray<TextAlign>;
 
-    allowedTextAutoResize?: ReadonlyArray<TextAutoResize>
+  allowedTextAutoResize?: ReadonlyArray<TextAutoResize>;
 }
 
-
 export interface SizingRule {
-    minSize?: number
-    minHeight?: number
-    minWidth?: number
+  minSize?: number;
+  minHeight?: number;
+  minWidth?: number;
 
-    maxSize?: number
-    maxHegith?: number
-    maxWidth?: number
+  maxSize?: number;
+  maxHegith?: number;
+  maxWidth?: number;
 
-    // when this is allowed, calcualtes (+-) 90 rotated node's width as height  with visualWidth and visualHeight
-    rightAngleCalculation?: SizingRule
+  // when this is allowed, calcualtes (+-) 90 rotated node's width as height  with visualWidth and visualHeight
+  rightAngleCalculation?: SizingRule;
 
-    minRatio?: number
-    maxRatio?: number
-    mustBeSquare?: boolean
+  minRatio?: number;
+  maxRatio?: number;
+  mustBeSquare?: boolean;
 }
 
 export interface NamingRule {
-    allowedNamePatterns?: Array<string>
+  allowedNamePatterns?: Array<string>;
 }
 
 export interface SlotsRule {
-    allowedTextSlotCount?: number
+  allowedTextSlotCount?: number;
 }
 
 export interface Allowence<T> {
-    target: T | '*'
-    allow: boolean
+  target: T | "*";
+  allow: boolean;
 }
 
 export interface StructureRule extends SlotsRule {
-    allowedTypes?: Array<Allowence<ReflectSceneNodeType>>
-    allowedChildren?: Array<Allowence<ReflectSceneNodeType>>
-    mustBeRoot?: boolean
+  allowedTypes?: Array<Allowence<ReflectSceneNodeType>>;
+  allowedChildren?: Array<Allowence<ReflectSceneNodeType>>;
+  mustBeRoot?: boolean;
 }
 
-export interface DetectionRule extends SizingRule, NamingRule, StructureRule {
-
-}
+export interface DetectionRule extends SizingRule, NamingRule, StructureRule {}
