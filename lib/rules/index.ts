@@ -3,8 +3,8 @@
  */
 
 import { ReflectSceneNodeType } from "@bridged.xyz/design-sdk/lib/nodes";
-import { TextAutoResize } from "@bridged.xyz/design-sdk/lib/nodes/types/text.node";
-import { TextAlign, TextAlignVertical } from "@reflect-ui/core/lib/text-align";
+import { TextAlign, TextAlignVertical } from "@reflect-ui/core";
+import { TextAutoResize } from "@bridged.xyz/design-sdk/lib/figma/types"; // we should suppport this on reflect-core
 
 export interface VerticalPlacementRule {
   verticalCenter: boolean;
