@@ -1,6 +1,6 @@
 {
-    "name": "@reflect.bridged.xyz/detection",
-    "version": "0.1.0",
+    "name": "@reflect-ui/detection",
+    "version": "0.1.1",
     "license": "MIT",
     "private": false,
     "scripts": {},
@@ -14,6 +14,12 @@
         "screen-size-specs": "0.0.1",
         "tinycolor2": "^1.4.2"
     },
+    "files": [
+        "index.ts",
+        "lib",
+        "README.md",
+        "LICENSE"
+    ],
     "devDependencies": {
         "@types/minimatch": "^3.0.3",
         "@types/tinycolor2": "^1.4.2",
