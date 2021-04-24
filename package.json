@@ -8,7 +8,7 @@
         "@bridged.xyz/design-sdk": "0.1.0",
         "@reflect-ui/lint": "0.0.5-rc",
         "@reflect-ui/core": "0.0.2-rc.7",
-        "@reflect-ui/uiutils": "0.0.7",
+        "@reflect-ui/uiutils": "0.0.8",
         "coli": "0.0.1",
         "minimatch": "^3.0.4",
         "screen-size-specs": "0.0.1",
