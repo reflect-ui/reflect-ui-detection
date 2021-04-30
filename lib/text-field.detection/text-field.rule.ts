@@ -1,4 +1,4 @@
-import { DEFAULT_TEXT_FIELD_NAMING_CONVENTION_PATTERNS } from "@reflect-ui/lint/lib/constants/naming-conventions/text-field.naming";
+import { DEFAULT_TEXT_FIELD_NAMING_CONVENTION_PATTERNS } from "@reflect-ui/namings";
 import { DetectionRule } from "../rules";
 
 export default <DetectionRule>{
