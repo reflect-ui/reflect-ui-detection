@@ -1,2 +1,2 @@
-export { DetectedButtonManifest } from "./button.detection";
-export { DetectedChipManifest } from "./chip.detection";
+export type { DetectedButtonManifest } from "./button.detection";
+export type { DetectedChipManifest } from "./chip.detection";
