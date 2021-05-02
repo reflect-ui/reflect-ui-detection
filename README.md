@@ -1,5 +1,7 @@
 # Reflect UI Specification based detection TS implementation for figma / sketch / [bridged](https://bridged.xyz) platform.
 
+> This is a part of [reflect](https://reflect-ui.com) and [designto.codes](https://designto.codes) poject
+
 ## Installation
 
 ```
