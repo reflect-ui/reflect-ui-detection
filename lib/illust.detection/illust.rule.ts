@@ -13,65 +13,69 @@ import { ComplexityRule, DetectionRule } from "../rules";
 // STRUCTURE
 // ✅ no-image
 // ✅ no-text
-export interface IllustDetectionRule extends DetectionRule, ComplexityRule {
 
-}
+/**
+ * Currently there is no accurate and valid algorithm to detect complex full width/height illustration. this detection rule will only detect complex illust-like node that is in mini size
+ * To use full sized illustration, user must specify it as a exportable or explicitly define it as an illust.
+ */
+export interface MiniIllustDetectionRule
+  extends DetectionRule,
+    ComplexityRule {}
 
-export default <IllustDetectionRule>{
-    // sizing
-    minSize: 56,
-    maxWidth: reflectMaxPhone.height,
-    maxHegith: reflectMaxPhone.height,
+export default <MiniIllustDetectionRule>{
+  // sizing
+  minSize: 56,
+  maxWidth: reflectMaxPhone.width,
+  maxHegith: 600,
+  mustBeRoot: false,
 
-    // todo
-    rightAngleCalculation: {
+  // todo
+  rightAngleCalculation: {},
+  minRatio: 1 / 5,
+  maxRatio: 5 / 1,
+  // sizing
 
+  // complexity
+  minTotalChildCount: 8,
+  maxTotalChildCount: 500,
+  minTotalColorCount: 3,
+  maxTotalColorCount: 100,
+
+  allowedChildren: [
+    {
+      target: "*",
+      allow: true,
     },
-    minRatio: 1 / 5,
-    maxRatio: 5 / 1,
-    // sizing
-
-    // complexity
-    minTotalChildCount: 8,
-    maxTotalChildCount: 500,
-    minTotalColorCount: 3,
-    maxTotalColorCount: 100,
-
-
-    allowedChildren: [
-        {
-            target: '*',
-            allow: true
-        },
-        {
-            target: ReflectSceneNodeType.text,
-            allow: false
-        },
-        {
-            target: ReflectSceneNodeType.image,
-            allow: false
-        },
-    ],
-    allowedTypes: [
-        {
-            target: '*',
-            allow: false
-        },
-        {
-            target: ReflectSceneNodeType.frame,
-            allow: true
-        },
-        {
-            target: ReflectSceneNodeType.group,
-            allow: true
-        },
-        {
-            target: ReflectSceneNodeType.instance,
-            allow: true
-        },
-        {
-            target: ReflectSceneNodeType.component,
-            allow: true
-        }
-    ]
-}
+    {
+      target: ReflectSceneNodeType.text,
+      allow: false,
+    },
+    {
+      target: ReflectSceneNodeType.image,
+      allow: false,
+    },
+    // Todo add constraints
+  ],
+  allowedTypes: [
+    {
+      target: "*",
+      allow: false,
+    },
+    {
+      target: ReflectSceneNodeType.frame,
+      allow: true,
+    },
+    {
+      target: ReflectSceneNodeType.group,
+      allow: true,
+    },
+    {
+      target: ReflectSceneNodeType.instance,
+      allow: true,
+    },
+    {
+      target: ReflectSceneNodeType.component,
+      allow: true,
+    },
+  ],
+};
