@@ -1,13 +1,10 @@
 import {
-  ReflectBaseNode,
   ReflectChildrenMixin,
   ReflectFrameNode,
-  ReflectGroupNode,
   ReflectRectangleNode,
   ReflectSceneNode,
-  ReflectSceneNodeType,
   ReflectTextNode,
-} from "@bridged.xyz/design-sdk/lib/nodes";
+} from "@design-sdk/core/nodes";
 import { ButtonManifest } from "@reflect-ui/core/lib";
 import { DetectionResult } from "..";
 import {

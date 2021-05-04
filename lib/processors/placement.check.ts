@@ -1,8 +1,8 @@
 import {
   ReflectConstraintMixin,
   ReflectSceneNode,
-} from "@bridged.xyz/design-sdk/lib/nodes";
-import { constraints } from "@bridged.xyz/design-sdk";
+} from "@design-sdk/core/nodes";
+import { constraints } from "@design-sdk/core";
 import { HorizontalPlacementRule, PlacementRule } from "../rules";
 
 export function checkIfValidPlacement(

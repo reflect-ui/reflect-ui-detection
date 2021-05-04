@@ -1,4 +1,4 @@
-import { ReflectSceneNodeType } from "@bridged.xyz/design-sdk/lib/nodes";
+import { ReflectSceneNodeType } from "@design-sdk/core/nodes";
 import { reflectMaxPhone } from "screen-size-specs";
 import { ComplexityRule, DetectionRule } from "../rules";
 

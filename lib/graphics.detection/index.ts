@@ -1,4 +1,4 @@
-import { ReflectSceneNode } from "@bridged.xyz/design-sdk/lib/nodes";
+import { ReflectSceneNode } from "@design-sdk/core/nodes";
 import { DetectionResult } from "..";
 
 export function detectIfGraphics(node: ReflectSceneNode): DetectionResult {

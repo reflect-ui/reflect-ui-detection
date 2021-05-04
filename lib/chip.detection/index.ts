@@ -1,29 +1,17 @@
-import { ButtonManifest } from "@reflect-ui/core";
-import { ReflectButtonBaseNode } from "../button-base.detection";
 import { ReflectButtonIconNode } from "../button-icon.detection";
 import { DetectionResult } from "../index";
-import { DetectedButtonManifest } from "../button.detection";
-import {
-  ReflectEllipseNode,
-  ReflectGroupNode,
-  ReflectSceneNode,
-  ReflectSceneNodeType,
-  ReflectTextNode,
-} from "@bridged.xyz/design-sdk/lib/nodes";
 import { ChipManifest } from "@reflect-ui/core/lib/chip/chip.manifest";
-import { checkIfValidSize } from "../processors/size.check";
 import { checkIfValidName } from "../processors/name.check";
 import rule from "./chip.rules";
 import ruleBackGround from "./chip.backgound";
 import ruleContent from "./chip.content";
-import ruleLeading from "./chip.leading";
-import ruleRear from "./chip.rear";
 import {
-  ReflectBaseNode,
+  ReflectSceneNode,
+  ReflectTextNode,
   ReflectChildrenMixin,
   ReflectFrameNode,
   ReflectRectangleNode,
-} from "@bridged.xyz/design-sdk/lib/nodes";
+} from "@design-sdk/core/nodes";
 import { detectIfIcon, ReflectIconNode } from "../icon.detection";
 
 const GRAND_CHILDREN_NO_MORE_THAN = 100;
