@@ -1,8 +1,5 @@
-import {
-  FontName,
-  LetterSpacing,
-} from "@bridged.xyz/design-sdk/lib/figma/types/v1";
-import { ReflectTextNode } from "@bridged.xyz/design-sdk/lib/nodes";
+import { FontName, LetterSpacing } from "@design-sdk/figma";
+import { ReflectTextNode } from "@design-sdk/core/nodes";
 import { TextAlign } from "@reflect-ui/core/lib/text-align/text-align.manifest";
 import { CheckResult } from "..";
 import { TextRule } from "../rules";

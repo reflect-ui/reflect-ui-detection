@@ -1,4 +1,4 @@
-import { SceneNode } from "@bridged.xyz/design-sdk/lib/figma/types/v1";
+import { SceneNode } from "@design-sdk/figma";
 import { SlotsRule } from "../rules";
 
 export function checkIfSlotsValid(node: SceneNode, rule: SlotsRule): boolean {
