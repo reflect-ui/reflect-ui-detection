@@ -104,7 +104,9 @@ export function detectIfChip(
       ],
     };
   }
-  var icon = RSlotNode.getGrandchildren({ includeThis: true }).find((n) =>
+
+  // RSlotNode might be undefined. we need explicit handling for this (@todo)
+  var icon = RSlotNode?.getGrandchildren({ includeThis: true }).find((n) =>
     detectIfIcon(n)
   ) as ReflectIconNode | undefined | null;
 
