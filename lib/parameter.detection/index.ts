@@ -1,7 +1,5 @@
 import { DetectionResult } from "..";
 
-// import { Parameter, Parameters } from "coli/lib"
-
 // export function detectParameters(): DetectionResult<Parameters> {
 
 //     const requiredParameter = <Parameter<any>>{
