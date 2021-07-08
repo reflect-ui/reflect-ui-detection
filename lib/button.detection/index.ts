@@ -66,13 +66,12 @@ export function detectIfButton(
     // ======================================
     // region slot:base
     //
-    const baseCandidateNodes: Array<ReflectButtonBaseNode> = grandchildren.filter(
-      (n) => {
+    const baseCandidateNodes: Array<ReflectButtonBaseNode> =
+      grandchildren.filter((n) => {
         return (
           n instanceof ReflectFrameNode || n instanceof ReflectRectangleNode
         );
-      }
-    ) as Array<ReflectButtonBaseNode>;
+      }) as Array<ReflectButtonBaseNode>;
 
     const buttonBaseDetectionResult = detectIfButtonBase(
       node,
@@ -100,22 +99,6 @@ export function detectIfButton(
     // region process slot:icon
     //
 
-    function findIconSlot(
-      on: ReflectSceneNode
-    ): Array<ReflectButtonIconNode> | undefined {
-      const detections: Array<ReflectButtonIconNode> = [];
-      const detection = detectIfIcon(on);
-      if (detection.result) {
-        detections.push(detection.data);
-      } else {
-        if (on instanceof ReflectChildrenMixin) {
-          on.children.forEach((child) => {
-            detections.push(...findIconSlot(child));
-          });
-        }
-      }
-      return detections;
-    }
     // const iconNodes: Array<ReflectBaseNode> = grandchildren.filter((c) => {
     //     const detection = detectIfIcon(c)
     //     return detection.result
@@ -203,4 +186,21 @@ export function detectIfButton(
     },
     reason: [`all blocking logic passed.`],
   };
+}
+
+function findIconSlot(
+  on: ReflectSceneNode
+): Array<ReflectButtonIconNode> | undefined {
+  const detections: Array<ReflectButtonIconNode> = [];
+  const detection = detectIfIcon(on);
+  if (detection.result) {
+    detections.push(detection.data);
+  } else {
+    if (on instanceof ReflectChildrenMixin) {
+      on.children.forEach((child) => {
+        detections.push(...findIconSlot(child));
+      });
+    }
+  }
+  return detections;
 }
