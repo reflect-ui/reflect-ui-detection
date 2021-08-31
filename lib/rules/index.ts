@@ -6,7 +6,7 @@ import { ReflectSceneNodeType } from "@design-sdk/core/nodes";
 import { TextAlign, TextAlignVertical } from "@reflect-ui/core";
 
 // we should suppport this on reflect-core
-import { TextAutoResize } from "@design-sdk/figma/types";
+import { TextAutoResize } from "@design-sdk/figma-types";
 
 export interface VerticalPlacementRule {
   verticalCenter: boolean;
