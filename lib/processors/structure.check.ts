@@ -2,7 +2,7 @@ import {
   ReflectChildrenMixin,
   ReflectSceneNode,
   ReflectSceneNodeType,
-} from "@design-sdk/core/nodes";
+} from "@design-sdk/core";
 import { CheckResult } from "..";
 import { Allowence, StructureRule } from "../rules";
 

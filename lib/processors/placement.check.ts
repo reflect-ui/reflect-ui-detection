@@ -1,7 +1,4 @@
-import {
-  ReflectConstraintMixin,
-  ReflectSceneNode,
-} from "@design-sdk/core/nodes";
+import { ReflectConstraintMixin, ReflectSceneNode } from "@design-sdk/core";
 import { constraints } from "@design-sdk/core";
 import { HorizontalPlacementRule, PlacementRule } from "../rules";
 

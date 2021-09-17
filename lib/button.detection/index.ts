@@ -4,7 +4,7 @@ import {
   ReflectRectangleNode,
   ReflectSceneNode,
   ReflectTextNode,
-} from "@design-sdk/core/nodes";
+} from "@design-sdk/core";
 import { ButtonManifest } from "@reflect-ui/core/lib";
 import { DetectionResult } from "..";
 import {
@@ -66,12 +66,13 @@ export function detectIfButton(
     // ======================================
     // region slot:base
     //
-    const baseCandidateNodes: Array<ReflectButtonBaseNode> =
-      grandchildren.filter((n) => {
+    const baseCandidateNodes: Array<ReflectButtonBaseNode> = grandchildren.filter(
+      (n) => {
         return (
           n instanceof ReflectFrameNode || n instanceof ReflectRectangleNode
         );
-      }) as Array<ReflectButtonBaseNode>;
+      }
+    ) as Array<ReflectButtonBaseNode>;
 
     const buttonBaseDetectionResult = detectIfButtonBase(
       node,

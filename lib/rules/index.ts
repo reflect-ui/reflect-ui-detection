@@ -2,7 +2,7 @@
  * Detection rule is used for pre-processing filtering the input node is valid for further processing.
  */
 
-import { ReflectSceneNodeType } from "@design-sdk/core/nodes";
+import { ReflectSceneNodeType } from "@design-sdk/core";
 import { TextAlign, TextAlignVertical } from "@reflect-ui/core";
 
 // we should suppport this on reflect-core

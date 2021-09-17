@@ -1,4 +1,4 @@
-import { ReflectSceneNodeType } from "@design-sdk/core/nodes";
+import { ReflectSceneNodeType } from "@design-sdk/core";
 import { DetectionRule } from "../rules";
 
 export default {

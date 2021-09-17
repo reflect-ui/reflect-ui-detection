@@ -1,4 +1,4 @@
-import { ReflectSceneNode } from "@design-sdk/core/nodes";
+import { ReflectSceneNode } from "@design-sdk/core";
 import { DetectionResult } from "..";
 import { checkIfValidStructure } from "../processors/structure.check";
 import rule from "./divider.rule";

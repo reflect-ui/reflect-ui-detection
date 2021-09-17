@@ -1,6 +1,6 @@
 import { DetectionRule } from "../rules";
 import { DEFAULT_ICON_NAMING_CONVENTION_PATTERNS } from "@reflect-ui/namings";
-import { ReflectSceneNodeType } from "@design-sdk/core/nodes";
+import { ReflectSceneNodeType } from "@design-sdk/core";
 import {
   ICON_MAX_SIZE,
   ICON_MIN_SIZE,

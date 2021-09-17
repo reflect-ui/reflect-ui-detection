@@ -1,4 +1,4 @@
-import { ReflectSceneNode } from "@design-sdk/core/nodes";
+import { ReflectSceneNode } from "@design-sdk/core";
 import { DetectionResult } from "..";
 import { checkIfRoot } from "../processors/root.check";
 import { checkIfValidSize } from "../processors/size.check";

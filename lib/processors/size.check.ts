@@ -1,4 +1,4 @@
-import { ReflectSceneNode } from "@design-sdk/core/nodes";
+import { ReflectSceneNode } from "@design-sdk/core";
 import { CheckResult } from "..";
 import { SizingRule } from "../rules";
 

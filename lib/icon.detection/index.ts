@@ -7,7 +7,7 @@ import {
   ReflectFrameNode,
   ReflectGroupNode,
   ReflectSceneNode,
-} from "@design-sdk/core/nodes";
+} from "@design-sdk/core";
 import { checkIfValidStructure } from "../processors/structure.check";
 
 export type ReflectIconNode = ReflectFrameNode | ReflectGroupNode;
