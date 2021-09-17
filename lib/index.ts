@@ -12,6 +12,7 @@ import { detectIfCard } from "./card.detection";
 import { detectIfCheckBox } from "./check-box.detection.ts";
 import { detectIfChip } from "./chip.detection";
 import { detectIfColumn } from "./column.detection";
+import { detectIfDivider } from "./divider.detection";
 import { detectIfIcon } from "./icon.detection";
 import { detectIfIllust } from "./illust.detection";
 import { detectIfScreen } from "./screen.detection";
@@ -36,9 +37,8 @@ export const detectIf = {
   checkBox: detectIfCheckBox,
   chip: detectIfChip,
   column: detectIfColumn,
+  divider: detectIfDivider,
   screen: detectIfScreen,
   icon: detectIfIcon,
   illust: detectIfIllust,
-
-  // TODO add all
 };

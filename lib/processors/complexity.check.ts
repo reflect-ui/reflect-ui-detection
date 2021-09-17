@@ -1,4 +1,4 @@
-import { ReflectChildrenMixin, ReflectSceneNode } from "@design-sdk/core/nodes";
+import { ReflectChildrenMixin, ReflectSceneNode } from "@design-sdk/core";
 import { CheckResult } from "..";
 import { ComplexityRule } from "../rules";
 

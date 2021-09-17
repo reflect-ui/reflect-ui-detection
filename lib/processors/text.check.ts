@@ -1,5 +1,5 @@
 import { FontName, LetterSpacing } from "@design-sdk/figma";
-import { ReflectTextNode } from "@design-sdk/core/nodes";
+import { ReflectTextNode } from "@design-sdk/core";
 import { TextAlign } from "@reflect-ui/core/lib/text-align/text-align.manifest";
 import { CheckResult } from "..";
 import { TextRule } from "../rules";

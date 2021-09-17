@@ -2,11 +2,11 @@
  * Detection rule is used for pre-processing filtering the input node is valid for further processing.
  */
 
-import { ReflectSceneNodeType } from "@design-sdk/core/nodes";
+import { ReflectSceneNodeType } from "@design-sdk/core";
 import { TextAlign, TextAlignVertical } from "@reflect-ui/core";
 
 // we should suppport this on reflect-core
-import { TextAutoResize } from "@design-sdk/figma/types";
+import { TextAutoResize } from "@design-sdk/figma-types";
 
 export interface VerticalPlacementRule {
   verticalCenter: boolean;

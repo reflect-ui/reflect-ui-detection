@@ -3,7 +3,7 @@ import {
   ReflectRectangleNode,
   ReflectSceneNode,
   ReflectSceneNodeType,
-} from "@design-sdk/core/nodes";
+} from "@design-sdk/core";
 import { DetectionResult } from "..";
 import { getSingle } from "../utils";
 

@@ -1,4 +1,4 @@
-import { ReflectSceneNode } from "@design-sdk/core/nodes";
+import { ReflectSceneNode } from "@design-sdk/core";
 import { detectIfButton } from "./button.detection";
 import { detectIfIcon } from "./icon.detection";
 import { detectIfIllust } from "./illust.detection";

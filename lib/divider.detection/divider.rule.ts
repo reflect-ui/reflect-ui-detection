@@ -1,4 +1,4 @@
-import { ReflectSceneNodeType } from "@design-sdk/core/nodes";
+import { ReflectSceneNodeType } from "@design-sdk/core";
 import { DetectionRule } from "../rules";
 
 export default {
@@ -21,10 +21,10 @@ export default {
         allow: true,
       },
     ],
-    maxHegith: 4,
-    minHeight: 0,
-    minWidth: 248,
-    maxWidth: 1080,
+    maxHegith: Number.POSITIVE_INFINITY,
+    minHeight: 24,
+    minWidth: 0,
+    maxWidth: 4,
   },
   horizontal: <DetectionRule>{
     allowedTypes: [

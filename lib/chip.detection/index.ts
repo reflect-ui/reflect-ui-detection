@@ -11,7 +11,7 @@ import {
   ReflectChildrenMixin,
   ReflectFrameNode,
   ReflectRectangleNode,
-} from "@design-sdk/core/nodes";
+} from "@design-sdk/core";
 import { detectIfIcon, ReflectIconNode } from "../icon.detection";
 
 const GRAND_CHILDREN_NO_MORE_THAN = 100;

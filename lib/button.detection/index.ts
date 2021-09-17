@@ -4,7 +4,7 @@ import {
   ReflectRectangleNode,
   ReflectSceneNode,
   ReflectTextNode,
-} from "@design-sdk/core/nodes";
+} from "@design-sdk/core";
 import { ButtonManifest } from "@reflect-ui/core/lib";
 import { DetectionResult } from "..";
 import {
@@ -100,22 +100,6 @@ export function detectIfButton(
     // region process slot:icon
     //
 
-    function findIconSlot(
-      on: ReflectSceneNode
-    ): Array<ReflectButtonIconNode> | undefined {
-      const detections: Array<ReflectButtonIconNode> = [];
-      const detection = detectIfIcon(on);
-      if (detection.result) {
-        detections.push(detection.data);
-      } else {
-        if (on instanceof ReflectChildrenMixin) {
-          on.children.forEach((child) => {
-            detections.push(...findIconSlot(child));
-          });
-        }
-      }
-      return detections;
-    }
     // const iconNodes: Array<ReflectBaseNode> = grandchildren.filter((c) => {
     //     const detection = detectIfIcon(c)
     //     return detection.result
@@ -203,4 +187,21 @@ export function detectIfButton(
     },
     reason: [`all blocking logic passed.`],
   };
+}
+
+function findIconSlot(
+  on: ReflectSceneNode
+): Array<ReflectButtonIconNode> | undefined {
+  const detections: Array<ReflectButtonIconNode> = [];
+  const detection = detectIfIcon(on);
+  if (detection.result) {
+    detections.push(detection.data);
+  } else {
+    if (on instanceof ReflectChildrenMixin) {
+      on.children.forEach((child) => {
+        detections.push(...findIconSlot(child));
+      });
+    }
+  }
+  return detections;
 }
