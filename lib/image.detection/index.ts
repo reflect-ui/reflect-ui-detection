@@ -10,9 +10,10 @@ import rule from "./image.rule";
  * throws when text is givven.
  *
  * Note:
- * - handled - multi fills with image fill on top
- * - handled - single fill with image fill
- * - not handled - image with opacity solid/gradient overlay.
+ * - **handled** - multi fills with image fill on top
+ * - **handled** - single fill with image fill
+ * - **not handled** - image as a background on a frame with additional children.
+ * - **not handled** - image with opacity solid/gradient overlay.
  * @param shape
  * @returns
  */
@@ -37,15 +38,6 @@ export function detectIfImage(
       accuracy: 1,
       entity: "graphics.image",
     };
-  }
-
-  // when can the fills can be mixed? -> This property can return figma.mixed if the node has multiple sets of fills. Text nodes can have multiple sets of fills if some characters are colored differently than others.
-  // learn more at https://www.figma.com/plugin-docs/api/properties/nodes-fills/#docsNav
-  // this can only happen when input is Text.
-  // @ts-ignore
-  if (shape.fills == Figma.figma.mixed) {
-    // we cannot handle this case.
-    throw "Cannot detect if the shape is in a image form since the input has a mixed fill. (are you givving text node as a input?)";
   }
 
   if (contains_one_or_more_image_fill(shape.fills)) {
@@ -122,4 +114,15 @@ const is_image_fill_on_top = (fills: ReadonlyArray<Figma.Paint>): boolean => {
  */
 const is_not_empty_fill = (fills: ReadonlyArray<Figma.Paint>): boolean => {
   return fills && fills.length > 0;
+};
+
+const is_fill_mixed = (fills: Figma.DefaultShapeMixin["fills"]): boolean => {
+  // when can the fills can be mixed? -> This property can return figma.mixed if the node has multiple sets of fills. Text nodes can have multiple sets of fills if some characters are colored differently than others.
+  // learn more at https://www.figma.com/plugin-docs/api/properties/nodes-fills/#docsNav
+  // this can only happen when input is Text.
+  // throw "Cannot detect if the shape is in a image form since the input has a mixed fill. (are you givving text node as a input?)";
+  if (fills == Figma.figma.mixed) {
+    return true;
+  }
+  return false;
 };
