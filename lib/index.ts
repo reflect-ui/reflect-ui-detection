@@ -16,6 +16,7 @@ import { detectIfDivider } from "./divider.detection";
 import { detectIfIcon } from "./icon.detection";
 import { detectIfIllust } from "./illust.detection";
 import { detectIfScreen } from "./screen.detection";
+import { detectIfImage } from "./image.detection";
 
 export * from "./detect";
 export * as rulse from "./rules";
@@ -41,4 +42,5 @@ export const detectIf = {
   screen: detectIfScreen,
   icon: detectIfIcon,
   illust: detectIfIllust,
+  image: detectIfImage,
 };
