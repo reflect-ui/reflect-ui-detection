@@ -5,12 +5,12 @@ import { checkIfValidPlacement } from "../processors/placement.check";
 import { checkIfValidText } from "../processors/text.check";
 import { PlacementRule, TextRule } from "../rules";
 import rule from "./button-text.rule";
-import { ReflectIconNode } from "../icon.detection";
+import { DetectedIconData } from "../icon.detection";
 
 export function detectIfValidButtonText(
   node: ReflectTextNode,
   base: ReflectButtonBaseNode,
-  icon?: ReflectIconNode
+  icon?: DetectedIconData
 ): DetectionResult {
   const textValidation = checkIfValidText(node, rule as TextRule);
   if (!textValidation.result) {
