@@ -12,13 +12,13 @@ import {
   ReflectFrameNode,
   ReflectRectangleNode,
 } from "@design-sdk/core";
-import { detectIfIcon, ReflectIconNode } from "../icon.detection";
+import { detectIfIcon, DetectedIconData } from "../icon.detection";
 
 const GRAND_CHILDREN_NO_MORE_THAN = 100;
 
 export type ReflectChipBackGroundNode = ReflectFrameNode | ReflectRectangleNode;
 export type ReflectChipContent = ReflectTextNode;
-export type ReflectChipIcon = ReflectIconNode;
+export type ReflectChipIcon = DetectedIconData;
 
 export type DetectedChipManifest = ChipManifest<
   ReflectChipBackGroundNode,
@@ -106,9 +106,11 @@ export function detectIfChip(
   }
 
   // RSlotNode might be undefined. we need explicit handling for this (@todo)
-  var icon = RSlotNode?.getGrandchildren({ includeThis: true }).find((n) =>
-    detectIfIcon(n)
-  ) as ReflectIconNode | undefined | null;
+  var icon = undefined;
+  // FIXME: chip l/r slot as icon detection disabled.
+  //   RSlotNode?.getGrandchildren({ includeThis: true }).find((n) =>
+  //   detectIfIcon(n)
+  // ) as ReflectIconNode | undefined | null;
 
   if (icon) {
     RSlotNode = icon;
