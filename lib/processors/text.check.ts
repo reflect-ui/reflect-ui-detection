@@ -9,14 +9,14 @@ export function checkIfValidText(
   rule: TextRule
 ): CheckResult {
   const fontSize = node.fontSize as number;
-  const characters = node.characters;
+  const characters = node.text;
   const words = characters.split(" ");
   const lines = naiveTextLines({
     width: node.width,
     fontSize: fontSize,
     height: node.height,
     fontName: node.fontName as FontName,
-    characters: characters,
+    text: characters,
     letterSpacing: node.letterSpacing as LetterSpacing,
   });
 
@@ -29,7 +29,7 @@ export function checkIfValidText(
   const validLines = lines >= rule.minLines && lines <= rule.maxLines;
   // const validVerticalAlignment = rule.allowedTextVerticalAlignments ? rule.allowedTextVerticalAlignments.includes(node.textAlignVertical) : false
   const validHorizontalAlignment = rule.allowedTextHorizontalAlignments
-    ? rule.allowedTextHorizontalAlignments.includes(node.textAlignHorizontal)
+    ? rule.allowedTextHorizontalAlignments.includes(node.textAlign)
     : true;
   const validTextAutoResize = rule.allowedTextAutoResize
     ? rule.allowedTextAutoResize.includes(node.textAutoResize)
@@ -67,7 +67,7 @@ function naiveTextLines(args: {
   height: number;
   fontName: FontName;
   fontSize: number;
-  characters: string;
+  text: string;
   letterSpacing: LetterSpacing;
 }): number {
   // Other option is to make dummy text on figma on runtime, get it's width, but it needs to be async
@@ -84,10 +84,10 @@ function naiveTextLines(args: {
 function naiveTextWidth(args: {
   fontName: FontName;
   fontSize: number;
-  characters: string;
+  text: string;
   letterSpacing: LetterSpacing;
 }): number {
-  const charLen = args.characters.length;
+  const charLen = args.text.length;
   const widthPerChar = 0.442105 * args.fontSize; // TODO -> based on Roboto Regular Aa-Zz + special aschi characters
   let estimatedTextWitdh = widthPerChar * charLen;
   if (args.letterSpacing?.unit == "PERCENT") {
@@ -115,7 +115,7 @@ function textContentLcrs(node: ReflectTextNode): TextContentPosition {
   let centerX: number;
   let endX: number;
 
-  switch (node.textAlignHorizontal) {
+  switch (node.textAlign) {
     case TextAlign.left:
       break;
     case TextAlign.center:

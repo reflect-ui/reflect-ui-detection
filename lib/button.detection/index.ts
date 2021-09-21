@@ -11,7 +11,7 @@ import {
   detectIfButtonBase,
   ReflectButtonBaseNode,
 } from "../button-base.detection";
-import { ReflectButtonIconNode } from "../button-icon.detection";
+import { DetectedButtonIconData } from "../button-icon.detection";
 import { detectIfValidButtonText } from "../button-text.detection";
 import { detectIfIcon } from "../icon.detection";
 import { checkIfValidSize } from "../processors/size.check";
@@ -21,7 +21,7 @@ import rule from "./button.rules";
 export type DetectedButtonManifest = ButtonManifest<
   ReflectButtonBaseNode,
   ReflectTextNode,
-  ReflectButtonIconNode
+  DetectedButtonIconData
 >;
 
 const GRAND_CHILDREN_NO_MORE_THAN = 10; // todo -> move this logic to rules interface field
@@ -31,7 +31,7 @@ export function detectIfButton(
   // region SLOTS
   let buttonTextSlotNode: ReflectTextNode;
   let buttonBaseSlotNode: ReflectButtonBaseNode;
-  let buttonIconSlotNode: ReflectButtonIconNode;
+  let buttonIconSlotNode: DetectedButtonIconData;
   // endregion SLOTS
 
   // run rule based first
@@ -107,7 +107,7 @@ export function detectIfButton(
     const iconNodes = findIconSlot(node);
     if (iconNodes.length === 1) {
       console.log(`icon inside button detected for ${node.toString()}`);
-      buttonIconSlotNode = iconNodes[0] as ReflectButtonIconNode;
+      buttonIconSlotNode = iconNodes[0] as DetectedButtonIconData;
     } else if (iconNodes.length === 0) {
       // do nothing. this must be non-icon button
     } else {
@@ -191,8 +191,8 @@ export function detectIfButton(
 
 function findIconSlot(
   on: ReflectSceneNode
-): Array<ReflectButtonIconNode> | undefined {
-  const detections: Array<ReflectButtonIconNode> = [];
+): Array<DetectedButtonIconData> | undefined {
+  const detections: Array<DetectedButtonIconData> = [];
   const detection = detectIfIcon(on);
   if (detection.result) {
     detections.push(detection.data);

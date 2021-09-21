@@ -1,4 +1,4 @@
-import { ReflectButtonIconNode } from "../button-icon.detection";
+import { DetectedButtonIconData } from "../button-icon.detection";
 import { DetectionResult } from "../index";
 import { ChipManifest } from "@reflect-ui/core/lib/chip/chip.manifest";
 import { checkIfValidName } from "../processors/name.check";
@@ -73,8 +73,8 @@ export function detectIfChip(
   }
   function findIconSlot(
     on: ReflectSceneNode
-  ): Array<ReflectButtonIconNode> | undefined {
-    const detections: Array<ReflectButtonIconNode> = [];
+  ): Array<DetectedButtonIconData> | undefined {
+    const detections: Array<DetectedButtonIconData> = [];
     const detection = detectIfIcon(on);
     if (detection.result) {
       detections.push(detection.data);
@@ -91,7 +91,7 @@ export function detectIfChip(
   const iconNodes = findIconSlot(node);
   if (iconNodes.length === 1) {
     console.log(`icon inside button detected for ${node.toString()}`);
-    RSlotNode = iconNodes[0] as ReflectButtonIconNode;
+    RSlotNode = iconNodes[0] as DetectedButtonIconData;
   } else if (iconNodes.length === 0) {
     // do nothing. this must be non-icon button
   } else {
