@@ -13,7 +13,7 @@ export function checkIfValidStructure(
   const validNodeType = checkIfValidNodeType(node.type, rule.allowedTypes);
   let validChildrenNodeTypes: boolean = true;
   if (node instanceof ReflectChildrenMixin) {
-    validChildrenNodeTypes = node.grandchildren.every((c) => {
+    validChildrenNodeTypes = node.grandchildren?.every((c) => {
       const valid = checkIfValidNodeType(c.type, rule.allowedChildren);
       return valid;
     });
