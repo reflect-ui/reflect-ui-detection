@@ -50,8 +50,40 @@ export function checkIfValidSize(
     validMinRatio &&
     validMaxRatio;
 
-  return {
-    result: validSize,
-    reason: ["valid size check failed"],
-  };
+  if (validSize) {
+    return {
+      result: true,
+      reason: [`node size is valid`],
+    };
+  } else {
+    const reasons = [];
+    if (!validMinSize) {
+      reasons.push(`node size is smaller than min size`);
+    }
+    if (!validMaxSize) {
+      reasons.push(`node size is bigger than max size`);
+    }
+    if (!validMaxWidth) {
+      reasons.push(`node width is bigger than max width`);
+    }
+    if (!validMaxHeight) {
+      reasons.push(`node height is bigger than max height`);
+    }
+    if (!validMinWidth) {
+      reasons.push(`node width is smaller than min width`);
+    }
+    if (!validMinHeight) {
+      reasons.push(`node height is smaller than min height`);
+    }
+    if (!validMinRatio) {
+      reasons.push(`node ratio is smaller than min ratio`);
+    }
+    if (!validMaxRatio) {
+      reasons.push(`node ratio is bigger than max ratio`);
+    }
+    return {
+      result: false,
+      reason: reasons,
+    };
+  }
 }

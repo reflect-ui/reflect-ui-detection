@@ -24,7 +24,7 @@ export function detectIfImage(
   if (!sizeValidation.result) {
     return {
       result: false,
-      reason: ["structure logic barrier failed", ...sizeValidation.reason],
+      reason: ["size validation failed", ...sizeValidation.reason],
       accuracy: 1,
       entity: "graphics.image",
     };

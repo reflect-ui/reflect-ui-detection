@@ -12,7 +12,11 @@ export function checkIfValidStructure(
 ): CheckResult {
   const validNodeType = checkIfValidNodeType(node.type, rule.allowedTypes);
   let validChildrenNodeTypes: boolean = true;
-  if (node instanceof ReflectChildrenMixin) {
+  if (
+    node instanceof ReflectChildrenMixin &&
+    node.children &&
+    node.children.length > 0
+  ) {
     validChildrenNodeTypes = node.grandchildren?.every((c) => {
       const valid = checkIfValidNodeType(c.type, rule.allowedChildren);
       return valid;
@@ -20,10 +24,24 @@ export function checkIfValidStructure(
   }
   const valid = validNodeType && validChildrenNodeTypes;
 
-  return {
-    result: valid,
-    reason: valid ? ["structure passed"] : ["structure failed"],
-  };
+  if (valid) {
+    return {
+      result: true,
+      reason: [`structure passed`],
+    };
+  } else {
+    const reasons = [];
+    if (!validNodeType) {
+      reasons.push(`invalid node type`);
+    }
+    if (!validChildrenNodeTypes) {
+      reasons.push(`invalid children node types`);
+    }
+    return {
+      result: false,
+      reason: reasons,
+    };
+  }
 }
 
 /**
