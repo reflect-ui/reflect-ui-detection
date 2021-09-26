@@ -3,7 +3,7 @@ import {
   ReflectRectangleNode,
   ReflectSceneNode,
   ReflectSceneNodeType,
-} from "@design-sdk/core";
+} from "@design-sdk/figma-node";
 import { DetectionResult } from "..";
 import { getSingle } from "../utils";
 
