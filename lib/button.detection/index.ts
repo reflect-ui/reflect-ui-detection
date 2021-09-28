@@ -106,7 +106,6 @@ export function detectIfButton(
     // }) as Array<ReflectTextNode>
     const iconNodes = findIconSlot(node);
     if (iconNodes.length === 1) {
-      console.log(`icon inside button detected for ${node.toString()}`);
       buttonIconSlotNode = iconNodes[0] as DetectedButtonIconData;
     } else if (iconNodes.length === 0) {
       // do nothing. this must be non-icon button
