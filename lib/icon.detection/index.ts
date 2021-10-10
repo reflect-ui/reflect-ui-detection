@@ -21,7 +21,7 @@ export function detectIfIcon(
 
   // TODO: cleanup this image check
   for (const child of Array.from(node.grandchildren ?? [])) {
-    if (child.images.length > 0) {
+    if (child.images?.length > 0) {
       return {
         result: false,
         entity: "icon",
