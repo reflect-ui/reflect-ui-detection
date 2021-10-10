@@ -19,6 +19,18 @@ export function detectIfIcon(
   const size = node.width;
   const color = node.primaryColor;
 
+  // TODO: cleanup this image check
+  for (const child of Array.from(node.grandchildren ?? [])) {
+    if (child.images.length > 0) {
+      return {
+        result: false,
+        entity: "icon",
+        accuracy: 1,
+        reason: ["input contains a image fill."],
+      };
+    }
+  }
+
   // 1. size check
   const sizeValidationResult: CheckResult = checkIfValidSize(node, rule);
   if (!sizeValidationResult.result) {
