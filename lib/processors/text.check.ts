@@ -1,3 +1,4 @@
+import { DimensionLetterSpacing } from "@reflect-ui/core";
 import { FontName, LetterSpacing } from "@design-sdk/figma";
 import { ReflectTextNode } from "@design-sdk/core";
 import { TextAlign } from "@reflect-ui/core/lib/text-align/text-align.manifest";
@@ -17,7 +18,7 @@ export function checkIfValidText(
     height: node.height,
     fontName: node.fontName as FontName,
     text: characters,
-    letterSpacing: node.letterSpacing as LetterSpacing,
+    letterSpacing: node.letterSpacing as DimensionLetterSpacing,
   });
 
   const validFontSize =
@@ -68,7 +69,7 @@ function naiveTextLines(args: {
   fontName: FontName;
   fontSize: number;
   text: string;
-  letterSpacing: LetterSpacing;
+  letterSpacing: DimensionLetterSpacing;
 }): number {
   // Other option is to make dummy text on figma on runtime, get it's width, but it needs to be async
   const estimatedTextWitdh = naiveTextWidth(args);
@@ -85,15 +86,21 @@ function naiveTextWidth(args: {
   fontName: FontName;
   fontSize: number;
   text: string;
-  letterSpacing: LetterSpacing;
+  letterSpacing: DimensionLetterSpacing;
 }): number {
+  const { letterSpacing } = args;
   const charLen = args.text.length;
   const widthPerChar = 0.442105 * args.fontSize; // TODO -> based on Roboto Regular Aa-Zz + special aschi characters
   let estimatedTextWitdh = widthPerChar * charLen;
-  if (args.letterSpacing?.unit == "PERCENT") {
-    estimatedTextWitdh *= args.letterSpacing?.value;
-  } else if (args.letterSpacing?.unit == "PIXELS") {
-    estimatedTextWitdh += charLen * args.letterSpacing.value;
+
+  const regx = /\d+/;
+
+  // unit pixels
+  if (typeof letterSpacing === "number") {
+    estimatedTextWitdh *= letterSpacing;
+  } else if (letterSpacing.endsWith("%")) {
+    const targetToNum = parseInt(letterSpacing.match(regx)[0]);
+    estimatedTextWitdh += charLen * targetToNum;
   }
 
   return estimatedTextWitdh;
