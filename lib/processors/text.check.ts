@@ -17,7 +17,7 @@ export function checkIfValidText(
     height: node.height,
     fontName: node.fontName as FontName,
     text: characters,
-    letterSpacing: node.letterSpacing as LetterSpacing,
+    letterSpacing: node.letterSpacing,
   });
 
   const validFontSize =
@@ -90,6 +90,7 @@ function naiveTextWidth(args: {
   const charLen = args.text.length;
   const widthPerChar = 0.442105 * args.fontSize; // TODO -> based on Roboto Regular Aa-Zz + special aschi characters
   let estimatedTextWitdh = widthPerChar * charLen;
+
   if (args.letterSpacing?.unit == "PERCENT") {
     estimatedTextWitdh *= args.letterSpacing?.value;
   } else if (args.letterSpacing?.unit == "PIXELS") {
