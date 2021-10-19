@@ -16,7 +16,7 @@ export function checkIfValidText(
     fontSize: fontSize,
     height: node.height,
     fontName: node.fontName as FontName,
-    text: characters,
+    data: characters,
     letterSpacing: node.letterSpacing,
   });
 
@@ -67,7 +67,7 @@ function naiveTextLines(args: {
   height: number;
   fontName: FontName;
   fontSize: number;
-  text: string;
+  data: string;
   letterSpacing: LetterSpacing;
 }): number {
   // Other option is to make dummy text on figma on runtime, get it's width, but it needs to be async
@@ -84,10 +84,10 @@ function naiveTextLines(args: {
 function naiveTextWidth(args: {
   fontName: FontName;
   fontSize: number;
-  text: string;
+  data: string;
   letterSpacing: LetterSpacing;
 }): number {
-  const charLen = args.text.length;
+  const charLen = args.data.length;
   const widthPerChar = 0.442105 * args.fontSize; // TODO -> based on Roboto Regular Aa-Zz + special aschi characters
   let estimatedTextWitdh = widthPerChar * charLen;
 
