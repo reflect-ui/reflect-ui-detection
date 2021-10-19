@@ -9,7 +9,7 @@ export function checkIfValidText(
   rule: TextRule
 ): CheckResult {
   const fontSize = node.fontSize as number;
-  const characters = node.text;
+  const characters = node.data;
   const words = characters.split(" ");
   const lines = naiveTextLines({
     width: node.width,
