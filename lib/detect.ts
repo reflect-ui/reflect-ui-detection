@@ -31,6 +31,8 @@ export type Entity =
   | "button.base"
   | "button.text"
   | "button.icon"
+  | "text-field"
+  | "text-field.placeholder"
   | "chip"
   | "parameters";
 
