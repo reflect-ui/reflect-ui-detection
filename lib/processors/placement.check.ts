@@ -1,5 +1,5 @@
 import { ReflectConstraintMixin, ReflectSceneNode } from "@design-sdk/core";
-import { constraints } from "@design-sdk/core";
+import { constraints } from "@design-sdk/core/features";
 import { HorizontalPlacementRule, PlacementRule } from "../rules";
 
 export function checkIfValidPlacement(
