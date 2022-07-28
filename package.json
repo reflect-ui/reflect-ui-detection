@@ -1,17 +1,35 @@
 {
     "name": "@reflect-ui/detection",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "license": "MIT",
     "private": false,
-    "scripts": {},
+    "scripts": {
+        "clean": "rimraf dist",
+        "build": "tsc",
+        "prepack": "yarn clean && yarn build"
+    },
     "dependencies": {
-        "@design-sdk/core": "0.0.0",
         "@reflect-ui/namings": "0.0.3",
-        "@reflect-ui/core": "0.0.3",
-        "coli": "0.0.1",
         "minimatch": "^3.0.4",
         "screen-size-specs": "0.0.1",
         "tinycolor2": "^1.4.2"
+    },
+    "peerDependencies": {
+        "@design-sdk/figma-node": "^0.0.16",
+        "@design-sdk/figma-types": "^0.0.16",
+        "@design-sdk/figma-utils": "^0.0.16",
+        "@reflect-ui/cg": "^0.0.5",
+        "@reflect-ui/core": "^0.0.5"
+    },
+    "devDependencies": {
+        "@design-sdk/figma-node": "^0.0.16",
+        "@design-sdk/figma-types": "^0.0.16",
+        "@design-sdk/figma-utils": "^0.0.16",
+        "@reflect-ui/cg": "^0.0.5",
+        "@reflect-ui/core": "^0.0.5",
+        "@types/minimatch": "^3.0.3",
+        "@types/tinycolor2": "^1.4.2",
+        "typescript": "^4.0.5"
     },
     "files": [
         "index.ts",
@@ -19,9 +37,7 @@
         "README.md",
         "LICENSE"
     ],
-    "devDependencies": {
-        "@types/minimatch": "^3.0.3",
-        "@types/tinycolor2": "^1.4.2",
-        "typescript": "^4.0.5"
+    "publishConfig": {
+        "access": "public"
     }
 }
