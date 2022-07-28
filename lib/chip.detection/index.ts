@@ -1,4 +1,4 @@
-import { ReflectButtonIconNode } from "../button-icon.detection";
+import { DetectedButtonIconData } from "../button-icon.detection";
 import { DetectionResult } from "../index";
 import { ChipManifest } from "@reflect-ui/core/lib/chip/chip.manifest";
 import { checkIfValidName } from "../processors/name.check";
@@ -12,13 +12,13 @@ import {
   ReflectFrameNode,
   ReflectRectangleNode,
 } from "@design-sdk/core";
-import { detectIfIcon, ReflectIconNode } from "../icon.detection";
+import { detectIfIcon, DetectedIconData } from "../icon.detection";
 
 const GRAND_CHILDREN_NO_MORE_THAN = 100;
 
 export type ReflectChipBackGroundNode = ReflectFrameNode | ReflectRectangleNode;
 export type ReflectChipContent = ReflectTextNode;
-export type ReflectChipIcon = ReflectIconNode;
+export type ReflectChipIcon = DetectedIconData;
 
 export type DetectedChipManifest = ChipManifest<
   ReflectChipBackGroundNode,
@@ -73,8 +73,8 @@ export function detectIfChip(
   }
   function findIconSlot(
     on: ReflectSceneNode
-  ): Array<ReflectButtonIconNode> | undefined {
-    const detections: Array<ReflectButtonIconNode> = [];
+  ): Array<DetectedButtonIconData> | undefined {
+    const detections: Array<DetectedButtonIconData> = [];
     const detection = detectIfIcon(on);
     if (detection.result) {
       detections.push(detection.data);
@@ -90,8 +90,7 @@ export function detectIfChip(
 
   const iconNodes = findIconSlot(node);
   if (iconNodes.length === 1) {
-    console.log(`icon inside button detected for ${node.toString()}`);
-    RSlotNode = iconNodes[0] as ReflectButtonIconNode;
+    RSlotNode = iconNodes[0] as DetectedButtonIconData;
   } else if (iconNodes.length === 0) {
     // do nothing. this must be non-icon button
   } else {
@@ -106,9 +105,11 @@ export function detectIfChip(
   }
 
   // RSlotNode might be undefined. we need explicit handling for this (@todo)
-  var icon = RSlotNode?.getGrandchildren({ includeThis: true }).find((n) =>
-    detectIfIcon(n)
-  ) as ReflectIconNode | undefined | null;
+  var icon = undefined;
+  // FIXME: chip l/r slot as icon detection disabled.
+  //   RSlotNode?.getGrandchildren({ includeThis: true }).find((n) =>
+  //   detectIfIcon(n)
+  // ) as ReflectIconNode | undefined | null;
 
   if (icon) {
     RSlotNode = icon;

@@ -1,4 +1,4 @@
-import { ReflectSceneNodeType } from "@design-sdk/core";
+import { ReflectSceneNodeType } from "@design-sdk/figma-node";
 import { DetectionRule } from "../rules";
 
 export default {

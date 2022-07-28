@@ -16,6 +16,9 @@ import { detectIfDivider } from "./divider.detection";
 import { detectIfIcon } from "./icon.detection";
 import { detectIfIllust } from "./illust.detection";
 import { detectIfScreen } from "./screen.detection";
+import { detectIfImage } from "./image.detection";
+import { detectIfTextField } from "./text-field.detection";
+import { detectIfPlaceholderText } from "./text-field-placeholder.detection";
 
 export * from "./detect";
 export * as rulse from "./rules";
@@ -41,4 +44,7 @@ export const detectIf = {
   screen: detectIfScreen,
   icon: detectIfIcon,
   illust: detectIfIllust,
+  image: detectIfImage,
+  textfield: detectIfTextField,
+  textfieldPlaceholder: detectIfPlaceholderText,
 };

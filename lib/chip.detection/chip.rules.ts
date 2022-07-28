@@ -1,5 +1,5 @@
 import { DetectionRule } from "../rules";
-import { ReflectSceneNodeType } from "@design-sdk/core";
+import { ReflectSceneNodeType } from "@design-sdk/figma-node";
 import { DEFAULT_CHIP_NAMING_CONVENTION_PATTERNS } from "@reflect-ui/namings";
 
 export default <DetectionRule>{

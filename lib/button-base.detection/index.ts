@@ -3,7 +3,7 @@ import {
   ReflectRectangleNode,
   ReflectSceneNode,
   ReflectSceneNodeType,
-} from "@design-sdk/core";
+} from "@design-sdk/figma-node";
 import { DetectionResult } from "..";
 import { getSingle } from "../utils";
 
@@ -34,7 +34,7 @@ export function detectIfButtonBase(
       const smallerW = Math.min(root.width, n.width);
       const diffW = smallerW / biggerW;
       const validWidthDiff = diffW > 0.8;
-      console.log("validWidthDiff", diffW, validWidthDiff);
+      // console.log("validWidthDiff", diffW, validWidthDiff);
       if (!validWidthDiff) {
         return false;
       }
@@ -44,7 +44,7 @@ export function detectIfButtonBase(
       const smallerH = Math.min(root.height, n.height);
       const diffH = smallerH / biggerH;
       const validHeightDiff = diffH > 0.9;
-      console.log("validHeightDiff", diffH, validHeightDiff);
+      // console.log("validHeightDiff", diffH, validHeightDiff);
       if (!validHeightDiff) {
         return false;
       }
@@ -54,7 +54,7 @@ export function detectIfButtonBase(
       const hsaVisibleStroke = n.strokes.length > 0 && n.strokeWeight > 0;
       return n.visible && (hsaVisibleStroke || n.hasVisibleFills);
     });
-    console.log("availableNodes", availableNodes);
+    // console.log("availableNodes", availableNodes);
 
     if (availableNodes.length == 0) {
       return {

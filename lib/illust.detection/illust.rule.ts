@@ -1,4 +1,4 @@
-import { ReflectSceneNodeType } from "@design-sdk/core";
+import { ReflectSceneNodeType } from "@design-sdk/figma-node";
 import { reflectMaxPhone } from "screen-size-specs";
 import { ComplexityRule, DetectionRule } from "../rules";
 

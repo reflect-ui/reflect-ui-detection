@@ -1,5 +1,5 @@
 import { ReflectConstraintMixin, ReflectSceneNode } from "@design-sdk/core";
-import { constraints } from "@design-sdk/core";
+import { constraints } from "@design-sdk/core/features";
 import { HorizontalPlacementRule, PlacementRule } from "../rules";
 
 export function checkIfValidPlacement(
@@ -33,7 +33,7 @@ function checkIfValidHorizontalPlacement(
   rule: HorizontalPlacementRule,
   relativeTo?: ReflectSceneNode
 ): boolean {
-  console.log("relative to lcrs", node.getRelativeToLcrs(relativeTo));
+  // console.log("relative to lcrs", node.getRelativeToLcrs(relativeTo));
   const lcrs: constraints.LCRS = relativeTo
     ? node.getRelativeToLcrs(relativeTo)
     : node.relativeLcrs;
