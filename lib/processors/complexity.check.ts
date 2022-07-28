@@ -1,4 +1,4 @@
-import { ReflectChildrenMixin, ReflectSceneNode } from "@design-sdk/core";
+import { ReflectChildrenMixin, ReflectSceneNode } from "@design-sdk/figma-node";
 import { CheckResult } from "..";
 import { ComplexityRule } from "../rules";
 

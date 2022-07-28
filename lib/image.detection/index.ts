@@ -1,6 +1,6 @@
-import { ReflectSceneNode } from "@design-sdk/figma";
+import type { ReflectSceneNode } from "@design-sdk/figma-node";
+import type { DetectionResult } from "..";
 import { Figma } from "@design-sdk/figma-types";
-import { DetectionResult } from "..";
 import { checkIfValidSize, checkIfValidStructure } from "../processors";
 import rule from "./image.rule";
 
@@ -121,8 +121,8 @@ const is_fill_mixed = (fills: Figma.DefaultShapeMixin["fills"]): boolean => {
   // learn more at https://www.figma.com/plugin-docs/api/properties/nodes-fills/#docsNav
   // this can only happen when input is Text.
   // throw "Cannot detect if the shape is in a image form since the input has a mixed fill. (are you givving text node as a input?)";
-  if (fills == Figma.figma.mixed) {
-    return true;
-  }
+  // if (fills == mixed) {
+  //   return true;
+  // }
   return false;
 };

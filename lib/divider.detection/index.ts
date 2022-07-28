@@ -2,7 +2,7 @@ import {
   ReflectLineNode,
   ReflectRectangleNode,
   ReflectSceneNode,
-} from "@design-sdk/core";
+} from "@design-sdk/figma-node";
 import { DividerManifest } from "@reflect-ui/core";
 import { DetectionResult } from "..";
 import { checkIfValidStructure } from "../processors/structure.check";

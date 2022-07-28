@@ -1,5 +1,5 @@
-import type { ReflectSceneNode, ReflectTextNode } from "@design-sdk/core";
-import { paintToColor } from "@design-sdk/core/utils/colors";
+import type { ReflectSceneNode, ReflectTextNode } from "@design-sdk/figma-node";
+import { paintToColor } from "@design-sdk/figma-utils";
 import tinycolor, { ColorFormats } from "tinycolor2";
 import type { DetectionResult } from "../detect";
 export function detectIfPlaceholderText(

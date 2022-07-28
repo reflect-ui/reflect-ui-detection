@@ -1,4 +1,4 @@
-import { TextAlign } from "@reflect-ui/core/lib";
+import { TextAlign } from "@reflect-ui/core";
 import { PlacementRule, TextRule } from "../rules";
 
 export default <TextRule | PlacementRule>{

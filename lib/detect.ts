@@ -1,4 +1,4 @@
-import { ReflectSceneNode } from "@design-sdk/core";
+import { ReflectSceneNode } from "@design-sdk/figma-node";
 import { detectIfButton } from "./button.detection";
 import { detectIfIcon } from "./icon.detection";
 import { detectIfIllust } from "./illust.detection";

@@ -1,4 +1,4 @@
-import { ReflectFrameNode, ReflectSceneNode } from "@design-sdk/core";
+import { ReflectFrameNode, ReflectSceneNode } from "@design-sdk/figma-node";
 import { DetectionResult } from "..";
 import { checkIfValidComplexity } from "../processors/complexity.check";
 import { checkIfValidSize } from "../processors/size.check";

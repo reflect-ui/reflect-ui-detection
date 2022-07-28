@@ -3,7 +3,7 @@ import { CheckResult, DetectionResult } from "..";
 import { checkIfSquare } from "../processors/square.check";
 import { checkIfValidSize } from "../processors/size.check";
 import { checkIfValidName } from "../processors/name.check";
-import { ReflectSceneNode } from "@design-sdk/core";
+import { ReflectSceneNode } from "@design-sdk/figma-node";
 import { checkIfValidStructure } from "../processors/structure.check";
 import { material_icon } from "./res/is_mdi";
 import { IconManifest, NamedDefaultOssIconConfig } from "@reflect-ui/core";

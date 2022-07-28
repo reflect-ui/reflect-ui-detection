@@ -1,4 +1,4 @@
-import { ReflectSceneNode } from "@design-sdk/core";
+import { ReflectSceneNode } from "@design-sdk/figma-node";
 import { DetectionResult } from "..";
 import { checkIfRoot } from "../processors/root.check";
 import { checkIfValidSize } from "../processors/size.check";

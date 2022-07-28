@@ -1,5 +1,8 @@
-import { ReflectConstraintMixin, ReflectSceneNode } from "@design-sdk/core";
-import { constraints } from "@design-sdk/core/features";
+import {
+  ReflectConstraintMixin,
+  ReflectSceneNode,
+} from "@design-sdk/figma-node";
+import * as constraints from "@design-sdk/figma-utils";
 import { HorizontalPlacementRule, PlacementRule } from "../rules";
 
 export function checkIfValidPlacement(

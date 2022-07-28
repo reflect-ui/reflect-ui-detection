@@ -4,7 +4,7 @@ import { ReflectSceneNodeType } from "@design-sdk/figma-node";
 import {
   ICON_MAX_SIZE,
   ICON_MIN_SIZE,
-} from "@reflect-ui/core/lib/icon/icon.constants";
+} from "@reflect-ui/core/dist/lib/icon/icon.constants";
 /**
  * material: https://material.io/design/iconography/system-icons.html
  * reflect: todo

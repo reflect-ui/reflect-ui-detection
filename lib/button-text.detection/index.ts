@@ -1,4 +1,4 @@
-import { ReflectTextNode } from "@design-sdk/core";
+import { ReflectTextNode } from "@design-sdk/figma-node";
 import { DetectionResult } from "..";
 import { ReflectButtonBaseNode } from "../button-base.detection";
 import { checkIfValidPlacement } from "../processors/placement.check";

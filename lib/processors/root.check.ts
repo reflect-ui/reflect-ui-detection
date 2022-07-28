@@ -1,4 +1,4 @@
-import { ReflectSceneNode } from "@design-sdk/core";
+import type { ReflectSceneNode } from "@design-sdk/figma-node";
 export function checkIfRoot(node: ReflectSceneNode): boolean {
   return node.isRoot;
 }

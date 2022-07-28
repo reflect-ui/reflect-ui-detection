@@ -1,6 +1,6 @@
-import { FontName, LetterSpacing } from "@design-sdk/figma";
-import { ReflectTextNode } from "@design-sdk/core";
-import { TextAlign } from "@reflect-ui/core/lib/text-align/text-align.manifest";
+import type { FontName, LetterSpacing } from "@design-sdk/figma-types";
+import { ReflectTextNode } from "@design-sdk/figma-node";
+import { TextAlign } from "@reflect-ui/core";
 import { CheckResult } from "..";
 import { TextRule } from "../rules";
 

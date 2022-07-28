@@ -1,6 +1,6 @@
 import { DetectedButtonIconData } from "../button-icon.detection";
 import { DetectionResult } from "../index";
-import { ChipManifest } from "@reflect-ui/core/lib/chip/chip.manifest";
+import { ChipManifest } from "@reflect-ui/core/dist/lib/chip";
 import { checkIfValidName } from "../processors/name.check";
 import rule from "./chip.rules";
 import ruleBackGround from "./chip.backgound";
@@ -11,7 +11,7 @@ import {
   ReflectChildrenMixin,
   ReflectFrameNode,
   ReflectRectangleNode,
-} from "@design-sdk/core";
+} from "@design-sdk/figma-node";
 import { detectIfIcon, DetectedIconData } from "../icon.detection";
 
 const GRAND_CHILDREN_NO_MORE_THAN = 100;

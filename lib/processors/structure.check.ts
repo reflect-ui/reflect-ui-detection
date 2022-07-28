@@ -2,7 +2,7 @@ import {
   ReflectChildrenMixin,
   ReflectSceneNode,
   ReflectSceneNodeType,
-} from "@design-sdk/core";
+} from "@design-sdk/figma-node";
 import { CheckResult } from "..";
 import { Allowence, StructureRule } from "../rules";
 
