@@ -15,16 +15,16 @@
         "tinycolor2": "^1.4.2"
     },
     "peerDependencies": {
-        "@design-sdk/figma-node": "^0.0.16",
-        "@design-sdk/figma-types": "^0.0.16",
-        "@design-sdk/figma-utils": "^0.0.16",
+        "@design-sdk/figma-node": "^0.0.25",
+        "@design-sdk/figma-types": "^0.0.25",
+        "@design-sdk/figma-utils": "^0.0.25",
         "@reflect-ui/cg": "^0.0.5",
         "@reflect-ui/core": "^0.0.5"
     },
     "devDependencies": {
-        "@design-sdk/figma-node": "^0.0.16",
-        "@design-sdk/figma-types": "^0.0.16",
-        "@design-sdk/figma-utils": "^0.0.16",
+        "@design-sdk/figma-node": "^0.0.25",
+        "@design-sdk/figma-types": "^0.0.25",
+        "@design-sdk/figma-utils": "^0.0.25",
         "@reflect-ui/cg": "^0.0.5",
         "@reflect-ui/core": "^0.0.5",
         "@types/minimatch": "^3.0.3",
