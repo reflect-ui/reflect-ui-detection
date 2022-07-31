@@ -1,10 +1,7 @@
 import { DetectionRule } from "../rules";
 import { DEFAULT_ICON_NAMING_CONVENTION_PATTERNS } from "@reflect-ui/namings";
 import { ReflectSceneNodeType } from "@design-sdk/figma-node";
-import {
-  ICON_MAX_SIZE,
-  ICON_MIN_SIZE,
-} from "@reflect-ui/core/dist/lib/icon/icon.constants";
+import { ICON_MAX_SIZE, ICON_MIN_SIZE } from "@reflect-ui/core/k";
 /**
  * material: https://material.io/design/iconography/system-icons.html
  * reflect: todo

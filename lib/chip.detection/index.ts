@@ -1,6 +1,6 @@
 import { DetectedButtonIconData } from "../button-icon.detection";
 import { DetectionResult } from "../index";
-import { ChipManifest } from "@reflect-ui/core/dist/lib/chip";
+import { ChipManifest } from "@reflect-ui/core/experimental";
 import { checkIfValidName } from "../processors/name.check";
 import rule from "./chip.rules";
 import ruleBackGround from "./chip.backgound";

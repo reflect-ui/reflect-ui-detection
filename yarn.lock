@@ -26,15 +26,15 @@
   resolved "https://registry.yarnpkg.com/@design-sdk/figma-utils/-/figma-utils-0.0.25.tgz#7b7f6632fd8689ef713b27b34a61257accc2052e"
   integrity sha512-HarFMa14L9zqg8rhLaCTXhTKFd6tlBno1mnSc/vl8ZVilmdq32OFFlmqS4MjyvrTfyAvbwlEMAhxV1SUQhFhRg==
 
-"@reflect-ui/cg@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@reflect-ui/cg/-/cg-0.0.5.tgz#772fc3161926527e21453101c4e13af5debec98d"
-  integrity sha512-rqqaumLDgk9dGtPgkYy9h5PLlNv8ZVEz/+ktOcJpJE6v9fAQOSH1Wh5WAehpiZTQtKe944GzrFMsb/g8pTabWg==
+"@reflect-ui/cg@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@reflect-ui/cg/-/cg-0.0.8.tgz#fff9025bb15b19d513fbded3b0a66b97b0b9fd35"
+  integrity sha512-6dGB6gTo1/3mf8qQBg2IN3/L0/2Q5OOjE8QMo/kwx0V5njiAQKPYeBDHGPxfNqRIDf9d+OvkHOWGMmXNEjcxYQ==
 
-"@reflect-ui/core@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@reflect-ui/core/-/core-0.0.5.tgz#f50ae00e64300c4b698ab5c5374c6ac3bb5de873"
-  integrity sha512-lA6AYHCF8aSyOvGXbJZcmlB5ccxCaznhxvD8Hg1UjVdhcbLhMWDbzoYqbrkqh+R4im3KnYw5n6pWSSdoWioYhA==
+"@reflect-ui/core@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@reflect-ui/core/-/core-0.0.8.tgz#14cf9003f076ee5246ba3db06c13cf4c0e822d3f"
+  integrity sha512-x22UesNrLJpNIqNocCqyrGFlFHZTRHmDAuQy+0AaM/dBjq5D+wesVRX0dm8N9GBfljTkjudbXiUsS9hqV3nCQQ==
   dependencies:
     "@reflect-ui/uiutils" "^0.1.2-1"
 
