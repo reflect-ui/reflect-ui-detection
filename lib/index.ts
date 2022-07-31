@@ -5,7 +5,10 @@ import { detectIfAppbar } from "./appbar.detection";
 import { detectIfAvatar } from "./avatar.detection";
 import { detectIfBreadCrumb } from "./bread-crumb.detection";
 import { detectIfButtonBase } from "./button-base.detection";
-import { detectIfButtonIcon } from "./button-icon.detection";
+import {
+  detectIfButtonIcon,
+  DetectedButtonIconData,
+} from "./button-icon.detection";
 import { detectIfValidButtonText } from "./button-text.detection";
 import { detectIfButton } from "./button.detection";
 import { detectIfCard } from "./card.detection";
@@ -13,7 +16,7 @@ import { detectIfCheckBox } from "./check-box.detection.ts";
 import { detectIfChip } from "./chip.detection";
 import { detectIfColumn } from "./column.detection";
 import { detectIfDivider } from "./divider.detection";
-import { detectIfIcon } from "./icon.detection";
+import { detectIfIcon, DetectedIconData } from "./icon.detection";
 import { detectIfIllust } from "./illust.detection";
 import { detectIfScreen } from "./screen.detection";
 import { detectIfImage } from "./image.detection";
@@ -48,3 +51,5 @@ export const detectIf = {
   textfield: detectIfTextField,
   textfieldPlaceholder: detectIfPlaceholderText,
 };
+
+export type { DetectedButtonIconData, DetectedIconData };
